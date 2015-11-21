@@ -2,6 +2,8 @@
 '''
 Get award noms data from IMDB where it is available programmatically
 '''
+#Remember original point was to see if people who've won in an
+#  early season become less likely to win in later seasons
 
 import csv,mechanize,re,time
 import numpy as np
@@ -19,12 +21,12 @@ hits = {'ActorDrama':0,'ActorComedy':0,'ActressDrama':0,
 showNoms = {}; showWins = {}
 personNoms = {}; personWins = {}
 
-winWithPrevNoms = dict(zip(range(10),[0]*10))
-loseWithPrevNoms = dict(zip(range(10),[0]*10))
+winWithPrevNoms = dict(zip(range(15),[0]*15))
+loseWithPrevNoms = dict(zip(range(15),[0]*15))
 winWithPrevWins = dict(zip(range(10),[0]*10))
 loseWithPrevWins = dict(zip(range(10),[0]*10))
-winBySeason = dict(zip(range(1,13),[0]*12))
-loseBySeason = dict(zip(range(1,13),[0]*12))
+winBySeason = dict(zip(range(1,16),[0]*15))
+loseBySeason = dict(zip(range(1,16),[0]*15))
 winByRunPt = dict()
 loseByRunPt = dict()
 
@@ -61,7 +63,7 @@ yearLinks = []
 for link in br.links():
     if '/event' in link.url:
         yearLinks.insert(0,link)  #so list is chronological
-yearLinks = yearLinks[-45:-40]
+yearLinks = yearLinks[-45:]
 
 years = []
 for link in yearLinks:
@@ -79,10 +81,6 @@ for link in yearLinks:
                 hits[hits.keys()[i]] += 1
                 for l2 in range(l+1,l+50):
                     if re.search('^<a[^>]*>([^<]*)</a>',thePage[l2]) != None:
-                        #print i
-                        #print thePage[l]
-                        #print thePage[l2]
-                        #print thePage[l2+1]
                         noms.append((re.search('^<a[^>]*>([^<]*)</a>',thePage[l2]).groups()[0],
                             re.search('^>([^<]*)</a>',thePage[l2+1]).groups()[0]))
                     if '<h2>' in thePage[l2]:
@@ -119,13 +117,21 @@ for link in yearLinks:
                             print showLink
                             showDetails = br.open(showLink)
                             for line in showDetails.readlines():
-                                if '<title>' in line:
+                                if '<title>' in line and 'TV Series' in line:
+                                    yearText = re.search('TV Series ([0-9]{4}).*([0-9]{4}|\s)\)',
+                                        line).groups()
+                                    showStartDates[noms[-1]] = int(yearText[0])
+                                    if yearText[1] == ' ':
+                                        showEndDates[noms[-1]] = 2016
+                                    else:
+                                        showEndDates[noms[-1]] = int(yearText[1])
+                                    break
+                                elif '<title>' in line and \
+                                    ('TV Mini-Series' in line or 'TV Movie' in line):
                                     showStartDates[noms[-1]] = \
-                                        int(re.search('TV Series ([0-9]{4}).*([0-9]{4})',
-                                            line).groups()[0])
-                                    showEndDates[noms[-1]] = \
-                                        int(re.search('TV Series ([0-9]{4}).*([0-9]{4})',
+                                        int(re.search('TV (Mini-Series|Movie) ([0-9]{4})',
                                             line).groups()[1])
+                                    showEndDates[noms[-1]] = showStartDates[noms[-1]] + 1
                                     break
                             br.back()
 
@@ -173,17 +179,18 @@ print hits.values()
 #Can plot histogram of winWithPrevNoms, but should be weighted somehow
 #  by most common number of prevNoms, which is winWithPrevNoms+loseWithPrevNoms
 #Or maybe it should be histogram of winWithPrevNoms/(totalWithPrevNoms)
-prevNomsOrWins = range(10)
+prevNomsOrWins = range(15)
 winFracPrevWins = [0]*10
-winFracPrevNoms = [0]*10
-winFracBySeason = [0]*10
+winFracPrevNoms = [0]*15
+winFracBySeason = [0]*15
 for i in range(10):
     if winWithPrevWins[i]+loseWithPrevWins[i] > 0:
         winFracPrevWins[i] = winWithPrevWins[i] / \
             float(winWithPrevWins[i]+loseWithPrevWins[i])
     else:
         winFracPrevWins[i] = np.nan
-    
+
+for i in range(15):
     if winWithPrevNoms[i]+loseWithPrevNoms[i] > 0:
         winFracPrevNoms[i] = winWithPrevNoms[i] / \
             float(winWithPrevNoms[i]+loseWithPrevNoms[i])
@@ -201,7 +208,7 @@ plt.plot(prevNomsOrWins,winFracPrevNoms,'ks',ms=10)
 plt.xlim([-0.5,9.5])
 plt.xlabel('Previous Noms'); plt.ylabel('Win Fraction')
 plt.show()
-plt.plot(prevNomsOrWins,winFracPrevWins,'ks',ms=10)
+plt.plot(prevNomsOrWins[:10],winFracPrevWins,'ks',ms=10)
 plt.xlim([-0.5,9.5])
 plt.xlabel('Previous Wins'); plt.ylabel('Win Fraction')
 plt.show()
@@ -209,10 +216,29 @@ plt.show()
 #Also to do by show season, scraped from IMDB.
 #Instead of scaling by total noms for that season, scale
 #  by point in the show's run?
-plt.plot(range(1,13),winBySeason,'ks',ms=10)
+plt.plot(range(1,16),winBySeason.values(),'ks',ms=10)
 plt.xlim([0.5,12.5])
 plt.xlabel('Season'); plt.ylabel('Win Fraction')
 plt.show()
 
-#Remember original point was to see if people who've won in an
-#  early season become less likely to win in later seasons
+
+#write to file
+if len(years) >= 30 and \
+    [hits.values()[i] == len(years) for i in range(6)]:
+    with open('%i-%i_winFracPrevNoms.csv' % (years[0],years[-1]),
+        'w') as csvfile:
+        mywriter = csv.writer(csvfile)
+        for i in range(len(winFracPrevNoms)):
+            mywriter.writerow([prevNomsOrWins[i],winFracPrevNoms[i]])
+    with open('%i-%i_winFracPrevWins.csv' % (years[0],years[-1]),
+        'w') as csvfile:
+        mywriter = csv.writer(csvfile)
+        for i in range(len(winFracPrevWins)):
+            mywriter.writerow([prevNomsOrWins[i],winFracPrevWins[i]])
+#    with open('%i-%i_winBySeason.csv' % (years[0],years[-1]),
+#        'w') as csvfile:
+#        mywriter = csv.writer(csvfile)
+#        for i in range(len(winBySeason)):
+#            mywriter.writerow([prevNomsOrWins[i],winBySeason[i]])
+
+
