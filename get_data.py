@@ -1,6 +1,9 @@
 #!/usr/bin/python
 '''
 Get award noms data from IMDB where it is available programmatically
+Also use IMDB to add show season number and actor/actress age
+  to the nominations
+Save diagnostics of interest to csv in convenient form for d3.js plot
 '''
 #Remember original point was to see if people who've won in an
 #  early season become less likely to win in later seasons
@@ -202,12 +205,14 @@ for i in range(1,13):
         winFracBySeason[i] = winBySeason[i] / \
             float(winBySeason[i]+loseBySeason[i])
     else:
-        winBySeason[i] = np.nan
+        winFracBySeason[i] = np.nan
 
 plt.plot(prevNomsOrWins,winFracPrevNoms,'ks',ms=10)
 plt.xlim([-0.5,9.5])
 plt.xlabel('Previous Noms'); plt.ylabel('Win Fraction')
 plt.show()
+#may rather count previous losing noms
+
 plt.plot(prevNomsOrWins[:10],winFracPrevWins,'ks',ms=10)
 plt.xlim([-0.5,9.5])
 plt.xlabel('Previous Wins'); plt.ylabel('Win Fraction')
@@ -221,24 +226,34 @@ plt.xlim([0.5,12.5])
 plt.xlabel('Season'); plt.ylabel('Win Fraction')
 plt.show()
 
-
 #write to file
-if len(years) >= 30 and \
+if len(years) >= 3 and \
     [hits.values()[i] == len(years) for i in range(6)]:
     with open('%i-%i_winFracPrevNoms.csv' % (years[0],years[-1]),
         'w') as csvfile:
         mywriter = csv.writer(csvfile)
+        mywriter.writerow(['prevNoms','numWins','numTot','winFrac'])
         for i in range(len(winFracPrevNoms)):
-            mywriter.writerow([prevNomsOrWins[i],winFracPrevNoms[i]])
+            mywriter.writerow([prevNomsOrWins[i],winWithPrevNoms[i],
+                winWithPrevNoms[i]+loseWithPrevNoms[i],
+                winFracPrevNoms[i]])
+
     with open('%i-%i_winFracPrevWins.csv' % (years[0],years[-1]),
         'w') as csvfile:
         mywriter = csv.writer(csvfile)
+        mywriter.writerow(['prevWins','numWins','numTot','winFrac'])
         for i in range(len(winFracPrevWins)):
-            mywriter.writerow([prevNomsOrWins[i],winFracPrevWins[i]])
-#    with open('%i-%i_winBySeason.csv' % (years[0],years[-1]),
-#        'w') as csvfile:
-#        mywriter = csv.writer(csvfile)
-#        for i in range(len(winBySeason)):
-#            mywriter.writerow([prevNomsOrWins[i],winBySeason[i]])
+            mywriter.writerow([prevNomsOrWins[i],winWithPrevWins[i],
+                winWithPrevWins[i]+loseWithPrevWins[i],
+                winFracPrevWins[i]])
+
+    with open('%i-%i_winBySeason.csv' % (years[0],years[-1]),
+        'w') as csvfile:
+        mywriter = csv.writer(csvfile)
+        mywriter.writerow(['season','numWins','numTot','winFrac'])
+        for i in range(len(winBySeason)):
+            mywriter.writerow([i+1,winBySeason[i+1],
+                winBySeason[i+1]+loseBySeason[i+1],
+                winFracBySeason[i]])
 
 
