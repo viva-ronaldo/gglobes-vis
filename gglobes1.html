@@ -1,0 +1,188 @@
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+  <!--bootstrap links for toggle tabs-->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!--note no ; between style entries-->
+  <style>
+    h2 {
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<!--TODO: set some properties of all charts in header CSS -->
+<!--TODO: rejig tabs as tab 2+ charts are not rendering -->
+
+<body>
+
+  <div class="container">
+    <ul class='nav nav-pills'>
+      <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+      <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
+      <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+    </ul>
+  </div>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+
+    </div>
+    <div id="menu1" class="tab-pane fade">
+
+    </div>
+    <div id="menu2" class="tab-pane fade">
+
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    "use strict";
+    var margin = 75,
+        width = 1400 - margin,
+        height = 800 - margin;
+
+    /*var svg = d3.select("body")
+      .append("svg")
+        .attr("width", width + margin)
+        .attr("height", height + margin)
+      .append('g')
+          .attr('class','chart');
+          */
+    d3.select("#home")   //# to select by id
+      .append("h2")
+      .text("Golden Globe Wins By Season")
+    var svg1 = dimple.newSvg("#home", 800, 600);
+
+    d3.select("#menu1")
+      .append("h2")
+      .text("Golden Globe Wins By Previous Nominations")
+    var svg2 = dimple.newSvg("#menu1", 800, 600);
+
+    d3.select("#menu2")
+      .append("h2")
+      .text("Golden Globe Wins By Previous Wins")
+    var svg3 = dimple.newSvg("#menu2", 800, 600);
+
+    //
+
+    d3.csv("1970-2014_winBySeason.csv", function(data) {
+      data.forEach(function(d) {
+        if (d.winFrac == 'nan') {
+          d.winFrac = 0.;
+        } else {
+          d.winFrac = parseFloat(d.winFrac);
+        }
+        d["numWins"] = +d["numWins"];
+        d["numTot"] = +d["numTot"];
+      });
+
+      var chart1 = new dimple.chart(svg1, data);
+      chart1.setBounds(60,30,750,500);
+      //this is (topleftx,toplefty,bottomrightx,bottomrighty)
+      //it's for the plot area only so leave space at bottom y, left x
+
+      var x1 = chart1.addCategoryAxis("x", "season");
+      var y1 = chart1.addMeasureAxis("y", "winFrac");
+
+      var s1 = chart1.addSeries(null, dimple.plot.bar); //all same colour
+      s1.barGap=0.30;
+      s1.getTooltipText = function (e) {
+        return ["Season "+e.xField[0],
+                data[e.xField[0]-1]["numWins"]+" wins from "+
+                data[e.xField[0]-1]["numTot"]+" total noms"];
+      };  
+      chart1.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+
+      y1.title = "Win fraction";
+      x1.addOrderRule("season");  //orders alphabetically
+      x1.colors = ['red'];
+      x1.fontSize = 'auto';  //scale with chart size rather than fixed 10px
+      y1.fontSize = 'auto';
+      //y.overrideMin = -10;  //control axis limit
+
+      chart1.draw(2000);  //draw over 2000ms (animated)
+    });
+
+    d3.csv("1970-2014_winFracPrevNoms.csv", function(data) {
+      data.forEach(function(d) {
+        if (d.winFrac == 'nan') {
+          d.winFrac = 0.;
+        } else {
+          d.winFrac = parseFloat(d.winFrac);
+        }
+        d["numWins"] = +d["numWins"];
+        d["numTot"] = +d["numTot"];
+        console.log(d);
+      });
+
+      var chart2 = new dimple.chart(svg2, data);
+      chart2.setBounds(60,30,750,500);
+
+      var x2 = chart2.addCategoryAxis("x", "prevNoms");
+      var y2 = chart2.addMeasureAxis("y", "winFrac");
+console.log('1');
+
+      var s2 = chart2.addSeries(null, dimple.plot.bar);
+      s2.barGap=0.30;
+      s2.getTooltipText = function (e) {
+        return [e.xField[0]+" previous noms",
+                data[e.xField[0]-1]["numWins"]+" wins from ",
+                data[e.xField[0]-1]["numTot"]+" total noms"];
+      };  
+      chart2.defaultColors = [new dimple.color('#CE1256')];
+
+      y2.title = "Win fraction";
+      x2.addOrderRule("prevNoms");
+      x2.colors = ['red'];
+      x2.fontSize = 'auto';
+      y2.fontSize = 'auto';
+      console.log('3');
+      console.log(data[3]["prevNoms"],data[3]["winFrac"])
+      chart2.draw(2000);
+
+    });
+
+    d3.csv("1970-2014_winFracPrevWins.csv", function(data) {
+      data.forEach(function(d) {
+        if (d.winFrac == 'nan') {
+          d.winFrac = 0.;
+        } else {
+          d.winFrac = parseFloat(d.winFrac);
+        }
+        d["numWins"] = +d["numWins"];
+        d["numTot"] = +d["numTot"];
+      });
+
+      var chart3 = new dimple.chart(svg3, data);
+      chart3.setBounds(60,30,750,500);
+
+      var x3 = chart3.addCategoryAxis("x", "prevWins");
+      var y3 = chart3.addMeasureAxis("y", "winFrac");
+
+      var s3 = chart3.addSeries(null, dimple.plot.bar); //all same colour
+      s3.barGap=0.30;
+      s3.getTooltipText = function (e) {
+        return ["Season "+e.xField[0],
+                data[e.xField[0]-1]["numWins"]+" wins from ",
+                data[e.xField[0]-1]["numTot"]+" total noms"];
+      };  
+      chart3.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+
+      y3.title = "Win fraction";
+      x3.addOrderRule("prevNoms");  //orders alphabetically
+      x3.colors = ['red'];
+      x3.fontSize = 'auto';  //scale with chart size rather than fixed 10px
+      y3.fontSize = 'auto';
+
+      chart3.draw(2000);
+
+    });
+
+  </script>
+</body>
