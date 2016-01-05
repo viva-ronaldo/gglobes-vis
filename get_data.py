@@ -24,6 +24,8 @@ saveNames = ['Actor Drama','Actor Comedy','Actress Drama',
 hits = {'ActorDrama':0,'ActorComedy':0,'ActressDrama':0,
         'ActressComedy':0,'SeriesDrama':0,'SeriesComedy':0}
 
+showStartDates = {}; showEndDates = {}
+
 br = mechanize.Browser()
 response = br.open('http://www.imdb.com/awards-central/golden-globes')
 
@@ -31,7 +33,7 @@ yearLinks = []
 for link in br.links():
     if '/event' in link.url:
         yearLinks.insert(0,link)  #so list is chronological
-yearLinks = yearLinks[-45:]
+yearLinks = yearLinks[-45:-1]  #don't want last one
 
 years = []
 for link in yearLinks:
@@ -108,7 +110,7 @@ for link in yearLinks:
             for j in range(len(yearNoms[i])):
                 mywriter.writerow(yearNoms[i][j])
         for i in range(4,6):
-            mywriter.writerow([saveName[i]])
+            mywriter.writerow([saveNames[i]])
             for j in range(len(yearNoms[i])):
                 mywriter.writerow([yearNoms[i][j]])
 

@@ -10,7 +10,7 @@ save diagnostics of interest to csv in convenient form for d3.js plot
 #  Actor Comedy 78, Show Comedy 80, Actress Drama 82, Actress Comedy 86, 
 #check 88,89,91,95,99
 
-import csv,re,time
+import csv,re,time,json
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -30,8 +30,6 @@ winBySeason = dict(zip(range(1,16),[0]*15))
 loseBySeason = dict(zip(range(1,16),[0]*15))
 winByRunPt = dict()
 loseByRunPt = dict()
-
-showStartDates = {}; showEndDates = {}
 
 def updateHistories(noms,prevNoms,winWithPrevNoms,loseWithPrevNoms):
     if noms[0] in prevNoms.keys():
@@ -68,20 +66,18 @@ years = []
 with open('gglobesRawData.csv','r') as csvfile:
     myreader = csv.reader(csvfile)
     count = 0
-    nextAreNoms = False
     for row in myreader:
         try:
-            if 1960 < int(row) < 2020:
+            if 1960 < int(row[0]) < 2020:
+                year = int(row[0])
                 count = 0
                 noms = []
         except:
             pass
 
         if count == 0:
-            years.append(int(row[0]))
-            print row[0]
+            years.append(year)
         elif row[0] in saveNames:
-            nextAreNoms = True
             noms = []
         else:
             if len(row) == 1:
@@ -90,7 +86,7 @@ with open('gglobesRawData.csv','r') as csvfile:
                 noms.append((row[0],row[1]))
 
         if len(noms) == 5:
-            print noms
+            #print noms
 
             if type(noms[0]) == type(''):
                 #record wins and losses as fn of previous total noms
@@ -105,6 +101,31 @@ with open('gglobesRawData.csv','r') as csvfile:
 
                 #update noms and wins
                 updateNoms(noms,showNoms,showWins)
+
+                #record wins and losses as fn of season
+                thisSeason = year - showStartDates[noms[0]]
+                if thisSeason > 5:
+                    print noms[0],thisSeason
+                winBySeason[thisSeason] += 1
+                for s in noms[1:]:
+                    thisSeason = year - showStartDates[s]
+                    loseBySeason[thisSeason] += 1
+
+                #and as fn of point in total run
+                pointInRun = (year-showStartDates[noms[0]])/\
+                    float(showEndDates[noms[0]]-showStartDates[noms[0]]+1)
+                if round(pointInRun,3) not in winByRunPt.keys():
+                    winByRunPt[round(pointInRun,3)] = 1
+                else:
+                    winByRunPt[round(pointInRun,3)] += 1
+                for s in noms[1:]:
+                    pointInRun = (year-showStartDates[s])/\
+                        float(showEndDates[s]-showStartDates[s]+1)
+                    if round(pointInRun,3) not in loseByRunPt.keys():
+                        loseByRunPt[round(pointInRun,3)] = 1
+                    else:
+                        loseByRunPt[round(pointInRun,3)] += 1
+
             else:
                 #record wins and losses as fn of previous total noms
                 winWithPrevNoms,loseWithPrevNoms = \
@@ -122,39 +143,6 @@ with open('gglobesRawData.csv','r') as csvfile:
 
 
         count += 1
-
-time.sleep(100)
-
-
-#**move this into year loop
-
-#record wins and losses as fn of season
-thisSeason = year - showStartDates[noms[0]]
-winBySeason[thisSeason] += 1
-for s in noms[1:]:
-    thisSeason = year - showStartDates[s]
-    loseBySeason[thisSeason] += 1
-
-#and as fn of point in total run
-pointInRun = (year-showStartDates[noms[0]])/\
-    float(showEndDates[noms[0]]-showStartDates[noms[0]]+1)
-if round(pointInRun,3) not in winByRunPt.keys():
-    winByRunPt[round(pointInRun,3)] = 1
-else:
-    winByRunPt[round(pointInRun,3)] += 1
-for s in noms[1:]:
-    pointInRun = (year-showStartDates[s])/\
-        float(showEndDates[s]-showStartDates[s]+1)
-    if round(pointInRun,3) not in loseByRunPt.keys():
-        loseByRunPt[round(pointInRun,3)] = 1
-    else:
-        loseByRunPt[round(pointInRun,3)] += 1
-
-
-
-
-
-
 
 #Can plot histogram of winWithPrevNoms, but should be weighted somehow
 #  by most common number of prevNoms, which is winWithPrevNoms+loseWithPrevNoms
@@ -198,11 +186,29 @@ plt.show()
 #Also to do by show season, scraped from IMDB.
 #Instead of scaling by total noms for that season, scale
 #  by point in the show's run?
+showLengths = {}
+for key in showStartDates.keys():
+    length = showEndDates[key] - showStartDates[key] + 1
+    if length > 15:
+        print key,length,showStartDates[key],showEndDates[key]
+    if length in showLengths.keys():
+        showLengths[length] += 1
+    else:
+        showLengths[length] = 1
+runLengthFracs = [0]*15
+for l in range(1,16):
+    if l in showLengths.keys():
+        runLengthFracs[l-1] = 100 * showLengths[l] / np.float(sum(showLengths.values()))
+    else:
+        runLengthFracs[l-1] = 0.    
 plt.plot(range(1,16),winBySeason.values(),'ks',ms=10)
+plt.plot(range(1,16),runLengthFracs,'g--',lw=2,label='Total run length')
 plt.xlim([0.5,12.5])
-plt.xlabel('Season'); plt.ylabel('Win Fraction')
+plt.xlabel('Season'); plt.ylabel('Fraction')
+plt.legend(loc='upper right')
+plt.title('Show wins by season')
 plt.show()
-
+#can label the 5 cases >s5
 
 #write to file
 if 0 and len(years) >= 3 and \
