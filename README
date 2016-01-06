@@ -1,2 +1,25 @@
 Practice d3.js and web scraping by making some visualisations
   of Golden Globe TV nominations through history.
+
+Published page should use tabs with d3 plot and paragraph of 
+  text on each.
+
+Plots:
+- Wins vs previous nominations: seems to show U shape with wins
+    more likely if you have no previous noms or many, and least
+    likely with 4 noms.
+- Wins vs previous wins: seems to show a dip at 1, i.e. more
+    likely to win with 0 wins than with 1, but then recovers
+    for 2-4. So does support the idea of shows 'having a turn' 
+    to get one win but one only. Others are serial winners.
+    With 0 wins your odds of winning are slightly better than
+    1 in 5 (28%), but with 1 win they are only 16%. Back to 1 
+    in 5 for 2-4 wins.
+- Wins vs previous losses? Does seem to increase for 3 and esp 4
+    previous losses, suggesting compensating voting. Numbers are
+    too small for 5 losses; no instances of 6+ losses.
+- Show wins by season, with line showing average show lengths
+    are fairly flat up to ~s8. Wins come overly from s1-3. So 
+    many shows continue to s8-9 but rarely win past s5. Only
+    a handful of cases winning s6+, recently Breaking Bad.
+- Wins by point in run?

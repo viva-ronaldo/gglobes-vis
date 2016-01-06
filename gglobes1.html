@@ -21,26 +21,65 @@
 <body>
 
   <div class="container">
-    <ul class='nav nav-pills'>
-      <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-      <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
-      <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+    <ul class='nav nav-tabs'>
+      <li class="active"><a data-toggle="tab" href="#home">Previous nominations</a></li>
+      <li><a data-toggle="tab" href="#menu1">Previous wins</a></li>
+      <li><a data-toggle="tab" href="#menu2">Previous losses</a></li>
+      <li><a data-toggle="tab" href="#menu3">By season</a></li>
     </ul>
   </div>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-
+    <div id="home" class="tab-pane fade">
+      The win rate decreases as the number of previous nominations increases
+      from none to four, hinting that previous winners may be less likely to 
+      win than those who haven't yet won an award. As a result, the odds of
+      winning for a first-time nominee are slightly better than the one-in-five
+      that would be expected given that there are (usually) five nominees.
+      Win rate increases again at higher numbers of nominations (though the 
+      samples are small at 7 nominations and above), probably because to be
+      nominated so frequently the show or actor/actress must be popular among
+      the voters.
     </div>
     <div id="menu1" class="tab-pane fade">
-
+      Plotted against previous number of wins, the win fraction shows a
+      noticeable dip at 1 previous win, compared to no previous wins. A
+      nominee is thus less likely to win if they have already won once - 
+      this suggests that the voters do display a preference for letting
+      nominees have 'their turn' at winning once, but only once. At the same
+      time, those with 2-4 previous wins have a roughly one-in-five chance 
+      of winning again, meaning that there are a group of nominees that manage
+      to overcome the bias against one-time winners to win repeatedly.
     </div>
     <div id="menu2" class="tab-pane fade">
-
+      The win fraction increases as the number of previous losses increases
+      to 3 and 4, as further evidence of compensatory voting favouring those
+      that have been unsuccessful in the past. There are no instances of 
+      6 or more losing nominations.
+    </div>
+    <div id="menu3" class="tab-pane fade in active">
+      A different trend in voting is revealed here: wins come overwhelmingly
+      from shows in their first 3 seasons, with the greatest chance of winning
+      coming in a show's first year. This is despite the fact that a
+      substantial fraction of the shows nominated continue for 6-9 seasons. 
+      This is suggestive of one or both of voter fatigue after multiple wins 
+      in a show's early years, or a decline in quality in the later years of
+      a run. While more than half the shows nominated ran for 6 or more years 
+      (perhaps largely on the back of successes in their early years,
+      only a handful won any awards beyond their fifth season. These individual
+      cases are visible in the tooltips for the respective seasons.
     </div>
   </div>
 
+
   <script type="text/javascript">
+
+  //maybe try something like
+  /* var navList = d3.select("ul.navbar-nav");
+       navList.selectAll("li").on("click", function (d, i) {
+       navList.selectAll("li").classed("active", function (e, j) { return j == i; });
+      });
+  */
 
     "use strict";
     var margin = 75,
@@ -56,50 +95,96 @@
           */
     d3.select("#home")   //# to select by id
       .append("h2")
-      .text("Golden Globe Wins By Season")
-    var svg1 = dimple.newSvg("#home", 800, 600);
+      .text("Golden Globe Wins By Previous Nominations");
+    var svg2 = dimple.newSvg("#home", 800, 600);
 
     d3.select("#menu1")
       .append("h2")
-      .text("Golden Globe Wins By Previous Nominations")
-    var svg2 = dimple.newSvg("#menu1", 800, 600);
+      .text("Golden Globe Wins By Previous Wins");
+    var svg3 = dimple.newSvg("#menu1", 800, 600);
 
     d3.select("#menu2")
       .append("h2")
-      .text("Golden Globe Wins By Previous Wins")
-    var svg3 = dimple.newSvg("#menu2", 800, 600);
+      .text("Golden Globe Wins By Previous Losses");
+    var svg4 = dimple.newSvg("#menu2", 800, 600);
 
+    d3.select("#menu3")
+      .append("h2")
+      .text("Golden Globe Wins By Show Year");
+    var svg1 = dimple.newSvg("#menu3", 800, 600);
     //
 
-    d3.csv("1970-2014_winBySeason.csv", function(data) {
+    d3.csv("1972-2015_winBySeason.csv", function(data) {
       data.forEach(function(d) {
         if (d.winFrac == 'nan') {
           d.winFrac = 0.;
         } else {
-          d.winFrac = parseFloat(d.winFrac);
+          d.winFrac = parseFloat(d.winFrac)*100;
         }
         d["numWins"] = +d["numWins"];
         d["numTot"] = +d["numTot"];
+        d.fracShows = parseFloat(d.fracShows);
       });
-
+      
       var chart1 = new dimple.chart(svg1, data);
       chart1.setBounds(60,30,750,500);
       //this is (topleftx,toplefty,bottomrightx,bottomrighty)
       //it's for the plot area only so leave space at bottom y, left x
 
       var x1 = chart1.addCategoryAxis("x", "season");
-      var y1 = chart1.addMeasureAxis("y", "winFrac");
+      var y1 = chart1.addMeasureAxis("y", "numWins");
 
-      var s1 = chart1.addSeries(null, dimple.plot.bar); //all same colour
+      var s1 = chart1.addSeries(null, dimple.plot.bar, [x1,y1]); //all same colour
       s1.barGap=0.30;
       s1.getTooltipText = function (e) {
-        return ["Season "+e.xField[0],
-                data[e.xField[0]-1]["numWins"]+" wins from "+
-                data[e.xField[0]-1]["numTot"]+" total noms"];
+        if (data[e.xField[0]-1]["numWins"] == 1) {
+          if (e.xField[0] == 6) {
+            var theName = 'Breaking Bad, 2014';
+          } else if (e.xField[0] == 7) {
+            var theName = 'All in the Family, 1978';
+          } else if (e.xField[0] == 9) {
+            var theName = 'Cheers, 1991';
+          } else if (e.xField[0] == 10) {
+            var theName = 'M*A*S*H, 1982';
+          } else {
+            var theName = '60 Minutes, 1979';
+          }
+          return ["Season "+e.xField[0],
+                  data[e.xField[0]-1]["numWins"]+" win ("+theName+")"];
+        } else {
+          return ["Season "+e.xField[0],
+                  data[e.xField[0]-1]["numWins"]+" wins"];  
+        }
       };  
-      chart1.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+      chart1.defaultColors = [new dimple.color('#CE1256'),
+                              new dimple.color('#74C476')];  
+      //these are cycled through
 
-      y1.title = "Win fraction";
+      var y2 = chart1.addMeasureAxis("y", "fracShows");
+      var s2 = chart1.addSeries("Series2", dimple.plot.line, [x1,y2]);
+      var something = svg1.select("g").select("rect#dimple-all-10---");
+      something.style({"fill": "#fa6257"});
+      console.log(d3.select("#menu3 > svg:nth-child(2)"));
+      console.log(svg1.select("g"));
+      console.log(something);
+
+      s2.getTooltipText = function (e) {
+        var fracAsPc = data[e.xField[0]-1]["fracShows"]
+        if (e.xField[0] == 1) {
+          return [fracAsPc.toFixed(0)+"% of nominated shows",
+                  "ran for "+e.xField[0]+" year only"];
+        } else {
+          return [fracAsPc.toFixed(0)+"% of nominated shows",
+                  "ran for "+e.xField[0]+" years"];
+        }
+      };  
+      chart1.assignColor("fracShows","blue","blue",1);
+
+      y1.overrideMax = 35;
+      y2.overrideMax = 35;
+      y2.hidden = true;
+      y1.title = "Number of wins (green line: % of shows)";
+      x1.title = "Years since debut (green line: length in years)"
       x1.addOrderRule("season");  //orders alphabetically
       x1.colors = ['red'];
       x1.fontSize = 'auto';  //scale with chart size rather than fixed 10px
@@ -109,7 +194,7 @@
       chart1.draw(2000);  //draw over 2000ms (animated)
     });
 
-    d3.csv("1970-2014_winFracPrevNoms.csv", function(data) {
+    d3.csv("1972-2015_winFracPrevNoms.csv", function(data) {
       data.forEach(function(d) {
         if (d.winFrac == 'nan') {
           d.winFrac = 0.;
@@ -126,18 +211,19 @@
 
       var x2 = chart2.addCategoryAxis("x", "prevNoms");
       var y2 = chart2.addMeasureAxis("y", "winFrac");
-console.log('1');
+      console.log('1');
 
       var s2 = chart2.addSeries(null, dimple.plot.bar);
       s2.barGap=0.30;
       s2.getTooltipText = function (e) {
         return [e.xField[0]+" previous noms",
-                data[e.xField[0]-1]["numWins"]+" wins from ",
-                data[e.xField[0]-1]["numTot"]+" total noms"];
+                data[e.xField[0]]["numWins"]+" / "+
+                data[e.xField[0]]["numTot"]];
       };  
       chart2.defaultColors = [new dimple.color('#CE1256')];
 
       y2.title = "Win fraction";
+      x2.title = "Number of previous nominations"
       x2.addOrderRule("prevNoms");
       x2.colors = ['red'];
       x2.fontSize = 'auto';
@@ -148,7 +234,7 @@ console.log('1');
 
     });
 
-    d3.csv("1970-2014_winFracPrevWins.csv", function(data) {
+    d3.csv("1972-2015_winFracPrevWins.csv", function(data) {
       data.forEach(function(d) {
         if (d.winFrac == 'nan') {
           d.winFrac = 0.;
@@ -169,13 +255,13 @@ console.log('1');
       s3.barGap=0.30;
       s3.getTooltipText = function (e) {
         return ["Season "+e.xField[0],
-                data[e.xField[0]-1]["numWins"]+" wins from ",
-                data[e.xField[0]-1]["numTot"]+" total noms"];
+                data[e.xField[0]]["numWins"]+" wins from ",
+                data[e.xField[0]]["numTot"]+" total noms"];
       };  
       chart3.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
 
       y3.title = "Win fraction";
-      x3.addOrderRule("prevNoms");  //orders alphabetically
+      x3.addOrderRule("prevWins");  //orders alphabetically
       x3.colors = ['red'];
       x3.fontSize = 'auto';  //scale with chart size rather than fixed 10px
       y3.fontSize = 'auto';
