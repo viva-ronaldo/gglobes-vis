@@ -8,8 +8,24 @@
 
   <!--note no ; between style entries-->
   <style>
+    body {
+      width: 100%;
+    }
     h2 {
       text-align: center;
+    }
+    .tab-pane {
+      width: 1150px;
+      padding: 20px;    
+    }
+    .svgholder {
+      width: 70%;
+      float: left;
+    }
+    .textholder {
+      width: 30%;
+      float: left;
+      padding: 20px;
     }
   </style>
 
@@ -21,58 +37,90 @@
 <body>
 
   <div class="container">
+    <h2>Golden Globe Awards Patterns</h2>
+    <p>To coincide with tonight's 2016 <a href="http://www.goldenglobes.com">Golden Globes</a> ceremony I've put together some visualisations of previous award data in the main TV categories, in which the same nominees tend to appear repeatedly over successive years. I wanted to find out if the voting patterns show any 'memory' of previous awards; that is, does winning one or more times in the first few nominations make a nominee less likely to win in subsequent years? And at what point in a show's run is it most likely to win awards?</p>
+
+    <p>Golden Globe nominee and winner data for 1972-2015 were obtained from <a href="http://www.imdb.com">IMDB</a>. The categories of TV Series, Actor in a TV Series and Actress in a TV Series, in both the Drama and Comedy/Musical forms, were included, making for a total of 274 cases, including several ties. The plots are done using <a href="https://d3js.org">D3.js</a>, including the <a href="http://www.dimplejs.org">dimple.js</a> library, as an exercise in learning how to use this framework.</p>
+
     <ul class='nav nav-tabs'>
-      <li class="active"><a data-toggle="tab" href="#home">Previous nominations</a></li>
-      <li><a data-toggle="tab" href="#menu1">Previous wins</a></li>
-      <li><a data-toggle="tab" href="#menu2">Previous losses</a></li>
-      <li><a data-toggle="tab" href="#menu3">By season</a></li>
+      <li class="active"><a data-toggle="tab" href="#home" class="mhtab">Previous nominations</a></li>
+      <li><a data-toggle="tab" href="#menu1" class="m1tab">Previous wins</a></li>
+      <li><a data-toggle="tab" href="#menu2" class="m2tab">Previous losses</a></li>
+      <li><a data-toggle="tab" href="#menu3" class="m3tab">By season</a></li>
+      <li><a data-toggle="tab" href="#menu4" class="m4tab">Alphabetical</a></li>
+      <li><a data-toggle="tab" href="#menu5" class="m5tab">Name length</a></li>
     </ul>
   </div>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade">
-      The win rate decreases as the number of previous nominations increases
-      from none to four, hinting that previous winners may be less likely to 
-      win than those who haven't yet won an award. As a result, the odds of
-      winning for a first-time nominee are slightly better than the one-in-five
-      that would be expected given that there are (usually) five nominees.
-      Win rate increases again at higher numbers of nominations (though the 
-      samples are small at 7 nominations and above), probably because to be
-      nominated so frequently the show or actor/actress must be popular among
-      the voters.
+    <div id="home" class="tab-pane fade in active">
+      <h2>Golden Globe Wins By Previous Nominations</h2>
+      <div id="svgholdh" class="svgholder">
+
+      </div>
+      <div id="textholdh" class="textholder">
+        <p>The win rate decreases as the number of previous nominations increases from none to four, hinting that previous winners may be less likely to win than those who haven't yet won an award. As a result, the odds of winning for a first-time nominee are slightly better than the one-in-five that would be expected given that there are (usually) five nominees. Win rate increases again at higher numbers of nominations (though the samples are small at 7 nominations and above), probably because to be nominated so frequently the show or actor/actress must be generally popular among the voters.</p>
+      </div>
     </div>
     <div id="menu1" class="tab-pane fade">
-      Plotted against previous number of wins, the win fraction shows a
-      noticeable dip at 1 previous win, compared to no previous wins. A
-      nominee is thus less likely to win if they have already won once - 
-      this suggests that the voters do display a preference for letting
-      nominees have 'their turn' at winning once, but only once. At the same
-      time, those with 2-4 previous wins have a roughly one-in-five chance 
-      of winning again, meaning that there are a group of nominees that manage
-      to overcome the bias against one-time winners to win repeatedly.
+      <h2>Golden Globe Wins By Previous Wins</h2>
+      <div id="svghold1" class="svgholder">
+
+      </div>
+      <div id="texthold1" class="textholder">
+        <p>Plotted against previous number of wins, the win fraction shows a noticeable dip at 1 previous win, compared to no previous wins. A nominee is thus less likely to win if they have already won once: this suggests that the voters do display a preference for letting nominees have 'their turn' at winning once, but only once. At the same time, those with 2-3 previous wins have a roughly one-in-five chance of winning again (and the rare few with 4 or 5 wins have a higher-than-average win fraction, though the numbers are very small), meaning that there are a group of nominees that manage to overcome the bias against one-time winners to win repeatedly.</p>
+      </div>
+      <m1content></m1content>
     </div>
     <div id="menu2" class="tab-pane fade">
-      The win fraction increases as the number of previous losses increases
-      to 3 and 4, as further evidence of compensatory voting favouring those
-      that have been unsuccessful in the past. There are no instances of 
-      6 or more losing nominations.
+      <h2>Golden Globe Wins By Previous Losses</h2>
+      <div id="svghold2" class="svgholder">
+
+      </div>
+      <div id="texthold2" class="textholder">
+        <p>Against previous losses, there is a suggestion that the win fraction begins to increase once this gets to 3, which is further evidence of compensatory voting favouring those that have been unsuccessful in the past. The sample numbers at 6 and 7 losses too small to give reliable win fractions.</p>
+      </div>
     </div>
-    <div id="menu3" class="tab-pane fade in active">
-      A different trend in voting is revealed here: wins come overwhelmingly
-      from shows in their first 3 seasons, with the greatest chance of winning
-      coming in a show's first year. This is despite the fact that a
-      substantial fraction of the shows nominated continue for 6-9 seasons. 
-      This is suggestive of one or both of voter fatigue after multiple wins 
-      in a show's early years, or a decline in quality in the later years of
-      a run. While more than half the shows nominated ran for 6 or more years 
-      (perhaps largely on the back of successes in their early years,
-      only a handful won any awards beyond their fifth season. These individual
-      cases are visible in the tooltips for the respective seasons.
+    <div id="menu3" class="tab-pane fade">
+      <h2>Golden Globe Wins By Show Year</h2>
+      <div id="svghold3" class="svgholder">
+
+      </div>
+      <div id="texthold3" class="textholder">
+      <!--<h3>Golden Globe Wins By Show Year</h3>-->
+        <p>A different trend in voting is revealed here: wins (counting only the Drama Series and Comedy/Musical Series here) come overwhelmingly from shows in their first 3 seasons, with the greatest chance of winning coming in a show's first year. This is despite the fact that a substantial fraction of the shows nominated continue for 6-9 seasons (meaning that, in any given year, the distribution of nominated shows by season should follow the green line). This is suggestive of one or both of voter fatigue after multiple wins in a show's early years, or a decline in quality in the later years of a run. While more than half the shows nominated ran for 6 or more years (perhaps largely on the back of successes in their early years, only a handful won any awards beyond their fifth season. These individual cases are visible in the tooltips for the respective seasons.</p>
+      </div>
+    </div>
+    <div id="menu4" class="tab-pane fade">
+      <h2>Golden Globe Wins By Alphabet</h2>
+      <div id="svghold4" class="svgholder">
+
+      </div>
+      <div id="texthold4" class="textholder">
+        <p>A more mundane trend in voting is apparently revealed when the groups of five nominees in the four acting categories are ordered alphabetically by surname. It turns out that the nominee appearing first alphabetically has a greater chance of winning (28%) than the 20% chance that would be expected if surname played no role in voting. The probability of any of the five positions in the list reaching 49 wins in the 176 instances considered here by chance is only 0.04, so there is good reason to believe that this is evidence of a real bias in voting. Presumably nominees are, or were in the past, listed alphabetically when presented to voters, who are unconsciously biased towards the first name they read. In a purely statistical sense, this presumably enhanced the chances of Alan Alda, for example, which, combined with the length of his surname (see next tab), could go some way to accounting for his six wins!</p>
+
+        <p>Interestingly, the name appearing last in the list also seems to gain a small advantage, at the expense of the nominee in the middle of the list. The third-listed nominee has won on only 24 occasions, a number that would be expected to arise by chance with a probability of only 0.09. It seems plausible that a positive bias could also exist towards the last name that a voter reads.</p>
+
+        <p><i>The solid line in the plot shows the mean number of wins expected in each position by chance, and the dashed lines show the 90% confidence levels around this value for the five cases combined (i.e. there is a 10% probability of one of the five bars reaching these lines purely by chance). Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively.</i></p>
+      </div>
+    </div>
+    <div id="menu5" class="tab-pane fade">
+      <h2>Golden Globe Wins By Name Length</h2>
+      <div id="svghold5" class="svgholder">
+
+      </div>
+      <div id="texthold5" class="textholder">
+        <p>The length of an actor or actress's name (including spaces) also appears to have an affect on his or her chances of winning. In the four categories considered, on 28% of occasions (49 out of 176) was the nominee with the shortest name successful. The probability of such a large excursion from the expected ~20% win rate occurring by chance is 0.04, so there is a fairly clear bias towards shorter names. Whether this is a psychological effect whereby short names appear stronger, or something else, I don't know. There is also evidence, though with lower statistical confidence, that the nominee with the longest name is discriminated against in the voting (this nominee is successful on only 15% of occasions).</p>
+
+        <p><i>The solid line in the plot shows the mean number of wins expected in each position by chance, and the dashed lines show the 90% confidence levels around this value for the five cases combined (i.e. there is a 10% probability of one of the five bars reaching these lines purely by chance). Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively.</i></p>
+      </div>
     </div>
   </div>
 
-
   <script type="text/javascript">
+
+  //TODO: Fix all chart rendering
+  //TODO: use two plots for name length?
 
   //maybe try something like
   /* var navList = d3.select("ul.navbar-nav");
@@ -80,6 +128,9 @@
        navList.selectAll("li").classed("active", function (e, j) { return j == i; });
       });
   */
+
+  //#home now works after several clicks on other tabs
+  //alph works after 2 clicks in a row
 
     "use strict";
     var margin = 75,
@@ -93,182 +144,303 @@
       .append('g')
           .attr('class','chart');
           */
-    d3.select("#home")   //# to select by id
-      .append("h2")
-      .text("Golden Globe Wins By Previous Nominations");
-    var svg2 = dimple.newSvg("#home", 800, 600);
+    //d3.select("#home")   //# to select by id
+    //  .append("h2")
+    //  .text("Golden Globe Wins By Previous Nominations");
+    var svg2 = dimple.newSvg("#svgholdh", "100%", "100%");
+    var svg3 = dimple.newSvg("#svghold1", "100%", "100%");
+    var svg4 = dimple.newSvg("#svghold2", "100%", "100%");
+    var svg1 = dimple.newSvg("#svghold3", "100%", "100%");
 
-    d3.select("#menu1")
-      .append("h2")
-      .text("Golden Globe Wins By Previous Wins");
-    var svg3 = dimple.newSvg("#menu1", 800, 600);
-
-    d3.select("#menu2")
-      .append("h2")
-      .text("Golden Globe Wins By Previous Losses");
-    var svg4 = dimple.newSvg("#menu2", 800, 600);
-
-    d3.select("#menu3")
-      .append("h2")
-      .text("Golden Globe Wins By Show Year");
-    var svg1 = dimple.newSvg("#menu3", 800, 600);
+    var svg5 = dimple.newSvg("#svghold4", "100%", "100%");
+    var svg6 = dimple.newSvg("#svghold5", "100%", "100%");
     //
+    
 
-    d3.csv("1972-2015_winBySeason.csv", function(data) {
+    /*
+    d3.csv("1972-2015_nameLengths.csv", function(data) {
       data.forEach(function(d) {
-        if (d.winFrac == 'nan') {
-          d.winFrac = 0.;
-        } else {
-          d.winFrac = parseFloat(d.winFrac)*100;
-        }
-        d["numWins"] = +d["numWins"];
-        d["numTot"] = +d["numTot"];
-        d.fracShows = parseFloat(d.fracShows);
+        d["newt"] = d["year"]+d["person"];
+        d["nameLen"] = +d["nameLen"]+(Math.random()-0.5)*0.6;
+        d["year"] = +d["year"]+(Math.random()-0.5)*0.6;
       });
-      
-      var chart1 = new dimple.chart(svg1, data);
-      chart1.setBounds(60,30,750,500);
-      //this is (topleftx,toplefty,bottomrightx,bottomrighty)
-      //it's for the plot area only so leave space at bottom y, left x
 
-      var x1 = chart1.addCategoryAxis("x", "season");
-      var y1 = chart1.addMeasureAxis("y", "numWins");
 
-      var s1 = chart1.addSeries(null, dimple.plot.bar, [x1,y1]); //all same colour
-      s1.barGap=0.30;
-      s1.getTooltipText = function (e) {
-        if (data[e.xField[0]-1]["numWins"] == 1) {
-          if (e.xField[0] == 6) {
-            var theName = 'Breaking Bad, 2014';
-          } else if (e.xField[0] == 7) {
-            var theName = 'All in the Family, 1978';
-          } else if (e.xField[0] == 9) {
-            var theName = 'Cheers, 1991';
-          } else if (e.xField[0] == 10) {
-            var theName = 'M*A*S*H, 1982';
+      var chart6 = new dimple.chart(svg6, data);
+      chart6.setBounds(60,30,650,450);
+
+      var x6 = chart6.addMeasureAxis("x", "year");
+      var y6 = chart6.addMeasureAxis("y", "nameLen");
+
+      var s6 = chart6.addSeries(["newt","winOrLose"], dimple.plot.bubble); //all same colour
+      s6.stacked = false;
+      s6.barGap=0.30;
+      //s6.getTooltipText = function (e) {
+      //  return ["Season "+e.xField[0],
+      //          data[e.xField[0]]["numWins"]+" wins from ",
+      //          data[e.xField[0]]["numTot"]+" total noms"];
+      //};  
+      //chart6.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+
+      x6.overrideMin = 1971;
+      y6.title = "Name length";
+      //x6.colors = ['red'];
+      x6.fontSize = 'auto';  //scale with chart size rather than fixed 10px
+      y6.fontSize = 'auto';
+
+      chart6.draw(2000);
+
+    });
+    */
+
+    function basicBar1(thisSvg, filename, xvar, xtitle) {
+      console.log('in here');
+
+      //$("m1content").empty();   
+
+      d3.csv(filename, function(data) {
+        data.forEach(function(d) {
+          if (d.winFrac == 'nan') {
+            d.winFrac = 0.;
           } else {
-            var theName = '60 Minutes, 1979';
+            d.winFrac = parseFloat(d.winFrac);
           }
-          return ["Season "+e.xField[0],
-                  data[e.xField[0]-1]["numWins"]+" win ("+theName+")"];
-        } else {
-          return ["Season "+e.xField[0],
-                  data[e.xField[0]-1]["numWins"]+" wins"];  
-        }
-      };  
-      chart1.defaultColors = [new dimple.color('#CE1256'),
-                              new dimple.color('#74C476')];  
-      //these are cycled through
+          d["numWins"] = +d["numWins"];
+          d["numTot"] = +d["numTot"];
+        });
 
-      var y2 = chart1.addMeasureAxis("y", "fracShows");
-      var s2 = chart1.addSeries("Series2", dimple.plot.line, [x1,y2]);
-      var something = svg1.select("g").select("rect#dimple-all-10---");
-      something.style({"fill": "#fa6257"});
-      console.log(d3.select("#menu3 > svg:nth-child(2)"));
-      console.log(svg1.select("g"));
-      console.log(something);
+        var chart2 = new dimple.chart(thisSvg, data);
+        chart2.setBounds(60,30,650,450);
 
-      s2.getTooltipText = function (e) {
-        var fracAsPc = data[e.xField[0]-1]["fracShows"]
-        if (e.xField[0] == 1) {
-          return [fracAsPc.toFixed(0)+"% of nominated shows",
-                  "ran for "+e.xField[0]+" year only"];
-        } else {
-          return [fracAsPc.toFixed(0)+"% of nominated shows",
-                  "ran for "+e.xField[0]+" years"];
-        }
-      };  
-      chart1.assignColor("fracShows","blue","blue",1);
+        var x2 = chart2.addCategoryAxis("x", xvar);
+        var y2 = chart2.addMeasureAxis("y", "winFrac");
 
-      y1.overrideMax = 35;
-      y2.overrideMax = 35;
-      y2.hidden = true;
-      y1.title = "Number of wins (green line: % of shows)";
-      x1.title = "Years since debut (green line: length in years)"
-      x1.addOrderRule("season");  //orders alphabetically
-      x1.colors = ['red'];
-      x1.fontSize = 'auto';  //scale with chart size rather than fixed 10px
-      y1.fontSize = 'auto';
-      //y.overrideMin = -10;  //control axis limit
+        var s2 = chart2.addSeries(null, dimple.plot.bar);
+        s2.barGap=0.30;
+        s2.getTooltipText = function (e) {
+          if (xvar == "prevNoms") {
+            xbit = " previous noms";
+          } else if (xvar == "prevWins") {
+            xbit = " previous wins";            
+          } else if (xvar == "prevLosses") {
+            xbit = " previous losses";
+          }
+          return [e.xField[0]+xbit,
+                  data[e.xField[0]]["numWins"]+" / "+
+                  data[e.xField[0]]["numTot"]];
+        };  
+        chart2.defaultColors = [new dimple.color('#CE1256')];
 
-      chart1.draw(2000);  //draw over 2000ms (animated)
-    });
+        y2.title = "Win fraction";
+        x2.title = xtitle;
+        s2.title = 'Anything';
+        x2.addOrderRule(xvar);
+        x2.colors = ['red'];
+        x2.fontSize = 'auto';
+        y2.fontSize = 'auto';
+        
+        console.log(chart2);
+        //console.log(data[3]["prevNoms"],data[3]["winFrac"])
+        chart2.draw(2000);
 
-    d3.csv("1972-2015_winFracPrevNoms.csv", function(data) {
-      data.forEach(function(d) {
-        if (d.winFrac == 'nan') {
-          d.winFrac = 0.;
-        } else {
-          d.winFrac = parseFloat(d.winFrac);
-        }
-        d["numWins"] = +d["numWins"];
-        d["numTot"] = +d["numTot"];
-        console.log(d);
       });
+    }
 
-      var chart2 = new dimple.chart(svg2, data);
-      chart2.setBounds(60,30,750,500);
+    function bySeason(thisSvg) {
+      d3.csv("1972-2015_winBySeason.csv", function(data) {
+        data.forEach(function(d) {
+          if (d.winFrac == 'nan') {
+            d.winFrac = 0.;
+          } else {
+            d.winFrac = parseFloat(d.winFrac)*100;
+          }
+          d["numWins"] = +d["numWins"];
+          d["numTot"] = +d["numTot"];
+          d.fracShows = parseFloat(d.fracShows);
+        });
+        
+        var chart1 = new dimple.chart(thisSvg, data);
+        chart1.setBounds(60,30,650,450);
+        //this is (topleftx,toplefty,bottomrightx,bottomrighty)
+        //it's for the plot area only so leave space at bottom y, left x
 
-      var x2 = chart2.addCategoryAxis("x", "prevNoms");
-      var y2 = chart2.addMeasureAxis("y", "winFrac");
-      console.log('1');
+        var x1 = chart1.addCategoryAxis("x", "season");
+        var y1 = chart1.addMeasureAxis("y", "numWins");
 
-      var s2 = chart2.addSeries(null, dimple.plot.bar);
-      s2.barGap=0.30;
-      s2.getTooltipText = function (e) {
-        return [e.xField[0]+" previous noms",
-                data[e.xField[0]]["numWins"]+" / "+
-                data[e.xField[0]]["numTot"]];
-      };  
-      chart2.defaultColors = [new dimple.color('#CE1256')];
+        var s1 = chart1.addSeries(null, dimple.plot.bar, [x1,y1]); //all same colour
+        s1.barGap=0.30;
+        s1.getTooltipText = function (e) {
+          if (data[e.xField[0]-1]["numWins"] == 1) {
+            if (e.xField[0] == 6) {
+              var theName = 'Breaking Bad, 2014';
+            } else if (e.xField[0] == 7) {
+              var theName = 'All in the Family, 1978';
+            } else if (e.xField[0] == 9) {
+              var theName = 'Cheers, 1991';
+            } else if (e.xField[0] == 10) {
+              var theName = 'M*A*S*H, 1982';
+            } else {
+              var theName = '60 Minutes, 1979';
+            }
+            return ["Season "+e.xField[0],
+                    data[e.xField[0]-1]["numWins"]+" win ("+theName+")"];
+          } else {
+            return ["Season "+e.xField[0],
+                    data[e.xField[0]-1]["numWins"]+" wins"];  
+          }
+        };  
+        chart1.defaultColors = [new dimple.color('#CE1256'),
+                                new dimple.color('#74C476')];  
+        //these are cycled through
 
-      y2.title = "Win fraction";
-      x2.title = "Number of previous nominations"
-      x2.addOrderRule("prevNoms");
-      x2.colors = ['red'];
-      x2.fontSize = 'auto';
-      y2.fontSize = 'auto';
-      console.log('3');
-      console.log(data[3]["prevNoms"],data[3]["winFrac"])
-      chart2.draw(2000);
+        var y1b = chart1.addMeasureAxis("y", "fracShows");
+        var s1b = chart1.addSeries("Series2", dimple.plot.line, [x1,y1b]);
+        s1b.lineWeight = 3;
+        var something = svg1.select("g").select("rect#dimple-all-10---");
+        something.style({"fill": "#fa6257"});
+        console.log(d3.select("#menu3 > svg:nth-child(2)"));
+        console.log(svg1.select("g"));
+        console.log(something);
 
-    });
+        s1b.getTooltipText = function (e) {
+          var fracAsPc = data[e.xField[0]-1]["fracShows"]
+          if (e.xField[0] == 1) {
+            return [fracAsPc.toFixed(0)+"% of nominated shows",
+                    "ran for "+e.xField[0]+" year only"];
+          } else {
+            return [fracAsPc.toFixed(0)+"% of nominated shows",
+                    "ran for "+e.xField[0]+" years"];
+          }
+        };  
+        chart1.assignColor("fracShows","blue","blue",1);
 
-    d3.csv("1972-2015_winFracPrevWins.csv", function(data) {
-      data.forEach(function(d) {
-        if (d.winFrac == 'nan') {
-          d.winFrac = 0.;
-        } else {
-          d.winFrac = parseFloat(d.winFrac);
-        }
-        d["numWins"] = +d["numWins"];
-        d["numTot"] = +d["numTot"];
+        y1.overrideMax = 35;
+        y1b.overrideMax = 35;
+        y1b.hidden = true;
+        y1.title = "Number of wins (green line: % of shows)";
+        x1.title = "Years since debut (green line: length in years)"
+        x1.addOrderRule("season");  //orders alphabetically
+        x1.colors = ['red'];
+        x1.fontSize = 'auto';  //scale with chart size rather than fixed 10px
+        y1.fontSize = 'auto';
+        //y.overrideMin = -10;  //control axis limit
+
+        chart1.draw(2000);  //draw over 2000ms (animated)
       });
+    }
 
-      var chart3 = new dimple.chart(svg3, data);
-      chart3.setBounds(60,30,750,500);
+    $(".mhtab").click(function() {
+      //$.getScript("m1.js");
+      //TODO: erase content first
 
-      var x3 = chart3.addCategoryAxis("x", "prevWins");
-      var y3 = chart3.addMeasureAxis("y", "winFrac");
+      basicBar1(svg2, "1972-2015_winFracPrevNoms.csv", 
+        "prevNoms", "Number of previous nominations");
+    })
 
-      var s3 = chart3.addSeries(null, dimple.plot.bar); //all same colour
-      s3.barGap=0.30;
-      s3.getTooltipText = function (e) {
-        return ["Season "+e.xField[0],
-                data[e.xField[0]]["numWins"]+" wins from ",
-                data[e.xField[0]]["numTot"]+" total noms"];
-      };  
-      chart3.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+    $(".m1tab").click(function() {
+      basicBar1(svg3, "1972-2015_winFracPrevWins.csv", 
+        "prevWins", "Number of previous wins");
+    })
 
-      y3.title = "Win fraction";
-      x3.addOrderRule("prevWins");  //orders alphabetically
-      x3.colors = ['red'];
-      x3.fontSize = 'auto';  //scale with chart size rather than fixed 10px
-      y3.fontSize = 'auto';
+    $(".m2tab").click(function() {
+      basicBar1(svg4, "1972-2015_winFracPrevLosses.csv", 
+        "prevLosses", "Number of previous losses");
+    })
+    
+    $(".m3tab").click(function() {
+      bySeason(svg1);
+    })
 
-      chart3.draw(2000);
-
-    });
 
   </script>
+
+  <script>
+    //TODO: if need to just make a subfunction inside and call it twice
+
+    function mine(thisSvg, myData,
+      xtitle) {
+      console.log('tab 4');
+
+      var chart5 = new dimple.chart(thisSvg, myData);
+      console.log(chart5);
+      chart5.setBounds(60,30,650,450);
+      //doesn't multiply from svg dims first time round
+      //  so only the explicit size is consistent on 2nd click
+      //TODO: switch to relative once figure out erase
+      //chart5.setBounds("10%","10%","80%","80%");
+      //chart5.setMargins(100,100,100,100);
+
+      var x5 = chart5.addCategoryAxis("x", "rank");
+      var y5 = chart5.addMeasureAxis("y", "totWins");
+
+      var s5 = chart5.addSeries("anyname", dimple.plot.bar);
+      console.log(s5);
+      //this has changed second time round: has shapes containing the bar rectangles
+      console.log(s5["shapes"]);
+
+      s5.barGap = 0.40;
+      s5.getTooltipText = function (e) {
+        return ["Rank "+e.xField[0]+" by alph. order,",
+                e.yValue+" wins"];
+      };  
+
+      var x5b = chart5.addMeasureAxis("x", "x2");
+      var y5b = chart5.addMeasureAxis("y", "avg");
+      var y5c = chart5.addMeasureAxis("y", "uconf");
+      var y5d = chart5.addMeasureAxis("y", "lconf");
+      var s5b = chart5.addSeries("rank", dimple.plot.line, [x5b,y5b]);
+      //need to use rank to tell dimple there is some difference between the points
+      var s5c = chart5.addSeries("rank", dimple.plot.line, [x5b,y5c]);
+      var s5d = chart5.addSeries("rank", dimple.plot.line, [x5b,y5d]);
+      s5b.addEventHandler("mouseover", function () {});
+      s5c.addEventHandler("mouseover", function () {});
+      s5d.addEventHandler("mouseover", function () {});
+
+      s5b.lineWeight = 5;
+      //TODO: access these line objects and make dashed, set colour
+
+      y5.showGridlines = false;
+      x5b.overrideMin = 0.6; x5b.overrideMax = 7; x5b.hidden = true;
+      y5.overrideMax = 50; 
+      y5b.overrideMax = 50; y5b.hidden = true; 
+      y5c.overrideMax = 50; y5c.hidden = true; 
+      y5d.overrideMax = 50; y5d.hidden = true; 
+
+      x5.title = xtitle;
+      y5.title = "Total wins";
+      x5.fontSize = 'auto';
+      y5.fontSize = 'auto';
+
+      //console.log(chart5);
+      //console.log(myData[1]);
+      chart5.draw(2000);
+    }
+
+    var alphData = [
+        {rank: 1, totWins: 49, x2: 0.5, avg: 35, uconf: 46, lconf: 25},
+        {rank: 2, totWins: 29, x2: 2.0, avg: 35, uconf: 46, lconf: 25},
+        {rank: 3, totWins: 21, x2: 3.0, avg: 35, uconf: 46, lconf: 25},
+        {rank: 4, totWins: 36, x2: 4.0, avg: 35, uconf: 46, lconf: 25},
+        {rank: 5, totWins: 41, x2: 7.5, avg: 35, uconf: 46, lconf: 25}
+      ];
+
+    var lenData = [
+        {rank: 1, totWins: 48, x2: 0.5, avg: 35, uconf: 46, lconf: 25},
+        {rank: 2, totWins: 32, x2: 2.0, avg: 35, uconf: 46, lconf: 25},
+        {rank: 3, totWins: 34, x2: 3.0, avg: 35, uconf: 46, lconf: 25},
+        {rank: 4, totWins: 35, x2: 4.0, avg: 35, uconf: 46, lconf: 25},
+        {rank: 5, totWins: 27, x2: 7.5, avg: 35, uconf: 46, lconf: 25}
+      ];
+
+
+    $(".m4tab").click(function() {
+      mine(svg5, alphData, "Nominee alphabetical rank");
+    });
+
+    $(".m5tab").click(function() {
+      mine(svg6, lenData, "Name length rank");
+    });
+    
+  </script>
+
 </body>

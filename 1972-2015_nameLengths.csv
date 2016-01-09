@@ -1,0 +1,916 @@
+year,person,show,nameLen,winOrLose
+1972,Robert Young,"Marcus Welby, M.D.",12,W
+1972,Raymond Burr,Ironside,12,L
+1972,Mike Connors,Mannix,12,L
+1972,William Conrad,Cannon,14,L
+1972,Peter Falk,Columbo,10,L
+1972,Carroll O'Connor,All in the Family,16,W
+1972,Herschel Bernardi,Arnie,17,L
+1972,Jack Klugman,The Odd Couple,12,L
+1972,Dick Van Dyke,The New Dick Van Dyke Show,13,L
+1972,Flip Wilson,Flip,11,L
+1972,Patricia Neal,The Waltons,13,W
+1972,Lynda Day George,Mission: Impossible,16,L
+1972,Peggy Lipton,The Mod Squad,12,L
+1972,Denise Nicholas,Room 222,15,L
+1972,Susan Saint James,McMillan & Wife,17,L
+1972,Carol Burnett,The Carol Burnett Show,13,W
+1972,Lucille Ball,Here's Lucy,12,L
+1972,Shirley Jones,The Partridge Family,13,L
+1972,Mary Tyler Moore,Mary Tyler Moore,16,L
+1972,Jean Stapleton,All in the Family,14,L
+1973,Peter Falk,Columbo,10,W
+1973,Mike Connors,Mannix,12,L
+1973,William Conrad,Cannon,14,L
+1973,Chad Everett,Medical Center,12,L
+1973,David Hartman,The Bold Ones: The New Doctors,13,L
+1973,Robert Young,"Marcus Welby, M.D.",12,L
+1973,Redd Foxx,Sanford and Son,9,W
+1973,Alan Alda,M*A*S*H,9,L
+1973,Bill Cosby,The New Bill Cosby Show,10,L
+1973,Paul Lynde,The Paul Lynde Show,10,L
+1973,Flip Wilson,Flip,11,L
+1973,Carroll O'Connor,All in the Family,16,L
+1973,Gail Fisher,Mannix,11,W
+1973,Ellen Corby,The Waltons,11,L
+1973,Anne Jeffreys,The Delphi Bureau,13,L
+1973,Michael Learned,The Waltons,15,L
+1973,Peggy Lipton,The Mod Squad,12,L
+1973,Susan Saint James,McMillan & Wife,17,L
+1973,Jean Stapleton,All in the Family,14,W
+1973,Julie Andrews,The Julie Andrews Hour,13,L
+1973,Bea Arthur,Maude,10,L
+1973,Carol Burnett,The Carol Burnett Show,13,L
+1973,Mary Tyler Moore,Mary Tyler Moore,16,L
+1974,James Stewart,Hawkins,13,W
+1974,Peter Falk,Columbo,10,L
+1974,David Carradine,Kung Fu,15,L
+1974,Mike Connors,Mannix,12,L
+1974,Robert Young,"Marcus Welby, M.D.",12,L
+1974,Richard Thomas,The Waltons,14,L
+1974,Jack Klugman,The Odd Couple,12,W
+1974,Carroll O'Connor,All in the Family,16,L
+1974,Dom DeLuise,Lotsa Luck,11,L
+1974,Alan Alda,M*A*S*H,9,L
+1974,Redd Foxx,Sanford and Son,9,L
+1974,Lee Remick,The Blue Knight,10,W
+1974,Julie London,Emergency!,12,L
+1974,Emily McLaughlin,General Hospital,16,L
+1974,Susan Saint James,McMillan & Wife,17,L
+1974,Michael Learned,The Waltons,15,L
+1974,Jean Stapleton,All in the Family,14,W
+1974,Cher,The Sonny and Cher Comedy Hour,4,L
+1974,Carol Burnett,The Carol Burnett Show,13,L
+1974,Mary Tyler Moore,Mary Tyler Moore,16,L
+1974,Bea Arthur,Maude,10,L
+1975,Telly Savalas,Kojak,13,W
+1975,Michael Douglas,The Streets of San Francisco,15,L
+1975,Peter Falk,Columbo,10,L
+1975,Richard Thomas,The Waltons,14,L
+1975,Mike Connors,Mannix,12,L
+1975,Alan Alda,M*A*S*H,9,W
+1975,Carroll O'Connor,All in the Family,16,L
+1975,Bob Newhart,The Bob Newhart Show,11,L
+1975,Edward Asner,Mary Tyler Moore,12,L
+1975,Redd Foxx,Sanford and Son,9,L
+1975,Angie Dickinson,Police Woman,15,W
+1975,Michael Learned,The Waltons,15,L
+1975,Teresa Graves,Get Christie Love!,13,L
+1975,Lee Meriwether,Barnaby Jones,14,L
+1975,Jean Marsh,"Upstairs, Downstairs",10,L
+1975,Valerie Harper,Rhoda,14,W
+1975,Jean Stapleton,All in the Family,14,L
+1975,Mary Tyler Moore,Mary Tyler Moore,16,L
+1975,Carol Burnett,The Carol Burnett Show,13,L
+1975,Esther Rolle,Good Times,12,L
+1976,Robert Blake,Baretta,12,W
+1976,Telly Savalas,Kojak,13,L
+1976,Karl Malden,The Streets of San Francisco,11,L
+1976,Barry Newman,Petrocelli,12,L
+1976,Peter Falk,Columbo,10,L
+1976,Alan Alda,M*A*S*H,9,W
+1976,Redd Foxx,Sanford and Son,9,L
+1976,Hal Linden,Barney Miller,10,L
+1976,Bob Newhart,The Bob Newhart Show,11,L
+1976,Carroll O'Connor,All in the Family,16,L
+1976,Johnny Carson,The Tonight Show Starring Johnny Carson,13,L
+1976,Lee Remick,Jennie: Lady Randolph Churchill,10,W
+1976,Lee Meriwether,Barnaby Jones,14,L
+1976,Rosemary Harris,Notorious Woman,15,L
+1976,Angie Dickinson,Police Woman,15,L
+1976,Michael Learned,The Waltons,15,L
+1976,Cloris Leachman,Phyllis,15,W
+1976,Valerie Harper,Rhoda,14,L
+1976,Carol Burnett,The Carol Burnett Show,13,L
+1976,Mary Tyler Moore,Mary Tyler Moore,16,L
+1976,Bea Arthur,Maude,10,L
+1977,Richard Jordan,Captains and the Kings,14,W
+1977,Peter Strauss,"Rich Man, Poor Man",13,L
+1977,Nick Nolte,"Rich Man, Poor Man",10,L
+1977,Telly Savalas,Kojak,13,L
+1977,Lee Majors,The Six Million Dollar Man,10,L
+1977,Henry Winkler,Happy Days,13,W
+1977,Hal Linden,Barney Miller,10,L
+1977,Freddie Prinze,Chico and the Man,14,L
+1977,Tony Randall,The Tony Randall Show,12,L
+1977,Sammy Davis Jr.,Sammy and Company,15,L
+1977,Michael Constantine,Sirota's Court,19,L
+1977,Alan Alda,M*A*S*H,9,L
+1977,Susan Blakely,"Rich Man, Poor Man",13,W
+1977,Kate Jackson,Charlie's Angels,12,L
+1977,Farrah Fawcett,Charlie's Angels,14,L
+1977,Angie Dickinson,Police Woman,15,L
+1977,Jean Marsh,"Upstairs, Downstairs",10,L
+1977,Sada Thompson,Family,13,L
+1977,Lindsay Wagner,The Bionic Woman,14,L
+1977,Carol Burnett,The Carol Burnett Show,13,W
+1977,Bernadette Peters,All's Fair,17,L
+1977,Isabel Sanford,The Jeffersons,14,L
+1977,Mary Tyler Moore,Mary Tyler Moore,16,L
+1977,Dinah Shore,Dinah!,11,L
+1978,Edward Asner,Lou Grant,12,W
+1978,James Garner,The Rockford Files,12,L
+1978,Peter Falk,Columbo,10,L
+1978,Robert Conrad,Flying Misfits,13,L
+1978,Telly Savalas,Kojak,13,L
+1978,Ron Howard,Happy Days,10,W
+1978,Henry Winkler,Happy Days,13,L
+1978,Carroll O'Connor,All in the Family,16,L
+1978,Hal Linden,Barney Miller,10,L
+1978,Alan Alda,M*A*S*H,9,L
+1978,Lesley Ann Warren,Harold Robbins' 79 Park Avenue,17,W
+1978,Leslie Uggams,Roots,13,L
+1978,Kate Jackson,Charlie's Angels,12,L
+1978,Lindsay Wagner,The Bionic Woman,14,L
+1978,Angie Dickinson,Police Woman,15,L
+1978,Carol Burnett,The Carol Burnett Show,13,W
+1978,Cindy Williams,Laverne & Shirley,14,L
+1978,Bea Arthur,Maude,10,L
+1978,Jean Stapleton,All in the Family,14,L
+1978,Penny Marshall,Laverne & Shirley,14,L
+1978,Isabel Sanford,The Jeffersons,14,L
+1979,Michael Moriarty,Holocaust,16,W
+1979,Michael Landon,Little House on the Prairie,14,L
+1979,John Houseman,The Paper Chase,13,L
+1979,Edward Asner,Lou Grant,12,L
+1979,James Garner,The Rockford Files,12,L
+1979,Richard Hatch,Battlestar Galactica,13,L
+1979,Robin Williams,Mork & Mindy,14,W
+1979,Gavin MacLeod,The Love Boat,13,L
+1979,John Ritter,Three's Company,11,L
+1979,Alan Alda,M*A*S*H,9,L
+1979,Judd Hirsch,Taxi,11,L
+1979,Rosemary Harris,Holocaust,15,W
+1979,Lee Remick,Wheels,10,L
+1979,Kate Jackson,Charlie's Angels,12,L
+1979,Sada Thompson,Family,13,L
+1979,Kristy McNichol,Family,15,L
+1979,Linda Lavin,Alice,11,W
+1979,Jean Stapleton,All in the Family,14,L
+1979,Carol Burnett,The Carol Burnett Show,13,L
+1979,Penny Marshall,Laverne & Shirley,14,L
+1979,Suzanne Somers,Three's Company,14,L
+1980,Edward Asner,Lou Grant,12,W
+1980,Robert Urich,Vega$,12,L
+1980,Martin Sheen,Blind Ambition,12,L
+1980,Richard Chamberlain,Centennial,19,L
+1980,John Houseman,The Paper Chase,13,L
+1980,Erik Estrada,CHiPs,12,L
+1980,James Garner,The Rockford Files,12,L
+1980,Robert Wagner,Hart to Hart,13,L
+1980,Alan Alda,M*A*S*H,9,W
+1980,Robin Williams,Mork & Mindy,14,L
+1980,Judd Hirsch,Taxi,11,L
+1980,Wilfrid Hyde-White,The Associates,18,L
+1980,John Ritter,Three's Company,11,L
+1980,Natalie Wood,From Here to Eternity,12,W
+1980,Stefanie Powers,Hart to Hart,15,L
+1980,Sada Thompson,Family,13,L
+1980,Barbara Bel Geddes,Dallas,18,L
+1980,Kate Mulgrew,Mrs. Columbo,12,L
+1980,Linda Lavin,Alice,11,W
+1980,Donna Pescow,Angie,12,L
+1980,Penny Marshall,Laverne & Shirley,14,L
+1980,Jean Stapleton,All in the Family,14,L
+1980,Loretta Swit,M*A*S*H,12,L
+1981,Richard Chamberlain,Shogun,19,W
+1981,Robert Urich,Vega$,12,L
+1981,Robert Wagner,Hart to Hart,13,L
+1981,Larry Hagman,Dallas,12,L
+1981,Edward Asner,Lou Grant,12,L
+1981,Alan Alda,M*A*S*H,9,W
+1981,Wayne Rogers,House Calls,12,L
+1981,Gavin MacLeod,The Love Boat,13,L
+1981,Hal Linden,Barney Miller,10,L
+1981,Judd Hirsch,Taxi,11,L
+1981,Yoko Shimada,Shogun,12,W
+1981,Stefanie Powers,Hart to Hart,15,L
+1981,Linda Gray,Dallas,10,L
+1981,Melissa Gilbert,Little House on the Prairie,15,L
+1981,Barbara Bel Geddes,Dallas,18,L
+1981,Katherine Helmond,Soap,17,W
+1981,Loni Anderson,WKRP in Cincinnati,13,L
+1981,Linda Lavin,Alice,11,L
+1981,Polly Holliday,Flo,14,L
+1981,Lynn Redgrave,House Calls,13,L
+1982,Daniel J. Travanti,Hill Street Blues,18,W
+1982,John Forsythe,Dynasty,13,L
+1982,Edward Asner,Lou Grant,12,L
+1982,Tom Selleck,"Magnum, P.I.",11,L
+1982,Larry Hagman,Dallas,12,L
+1982,Alan Alda,M*A*S*H,9,W
+1982,Judd Hirsch,Taxi,11,L
+1982,James Garner,Bret Maverick,12,L
+1982,Gavin MacLeod,The Love Boat,13,L
+1982,Tony Randall,"Love, Sidney",12,L
+1982,Barbara Bel Geddes,Dallas,18,W
+1982,Linda Evans,Dynasty,11,L
+1982,Stefanie Powers,Hart to Hart,15,L
+1982,Morgan Fairchild,Flamingo Road,16,L
+1982,Linda Gray,Dallas,10,L
+1982,Joan Collins,Dynasty,12,L
+1982,Eileen Brennan,Private Benjamin,14,W
+1982,Barbara Mandrell,Barbara Mandrell and the Mandrell Sisters,16,L
+1982,Bonnie Franklin,One Day at a Time,15,L
+1982,Loni Anderson,WKRP in Cincinnati,13,L
+1982,Loretta Swit,M*A*S*H,12,L
+1983,John Forsythe,Dynasty,13,W
+1983,Robert Wagner,Hart to Hart,13,L
+1983,Daniel J. Travanti,Hill Street Blues,18,L
+1983,Tom Selleck,"Magnum, P.I.",11,L
+1983,Larry Hagman,Dallas,12,L
+1983,Alan Alda,M*A*S*H,9,W
+1983,Robert Guillaume,Benson,16,L
+1983,Tony Randall,"Love, Sidney",12,L
+1983,Bob Newhart,Newhart,11,L
+1983,Judd Hirsch,Taxi,11,L
+1983,Joan Collins,Dynasty,12,W
+1983,Linda Evans,Dynasty,11,L
+1983,Jane Wyman,Falcon Crest,10,L
+1983,Victoria Principal,Dallas,18,L
+1983,Stefanie Powers,Hart to Hart,15,L
+1983,Debbie Allen,Fame,12,W
+1983,Nell Carter,Gimme a Break!,11,L
+1983,Eileen Brennan,Private Benjamin,14,L
+1983,Rita Moreno,9 to 5,11,L
+1983,Isabel Sanford,The Jeffersons,14,L
+1983,Bonnie Franklin,One Day at a Time,15,L
+1984,John Forsythe,Dynasty,13,W
+1984,Robert Wagner,Hart to Hart,13,L
+1984,James Brolin,Hotel,12,L
+1984,Tom Selleck,"Magnum, P.I.",11,L
+1984,Daniel J. Travanti,Hill Street Blues,18,L
+1984,John Ritter,Three's Company,11,W
+1984,Dabney Coleman,Buffalo Bill,14,L
+1984,Robert Guillaume,Benson,16,L
+1984,Ted Danson,Cheers,10,L
+1984,Bob Newhart,Newhart,11,L
+1984,Jane Wyman,Falcon Crest,10,W
+1984,Joan Collins,Dynasty,12,L
+1984,Stefanie Powers,Hart to Hart,15,L
+1984,Tyne Daly,Cagney & Lacey,9,L
+1984,Linda Evans,Dynasty,11,L
+1984,Joanna Cassidy,Buffalo Bill,14,W
+1984,Isabel Sanford,The Jeffersons,14,L
+1984,Shelley Long,Cheers,12,L
+1984,Debbie Allen,Fame,12,L
+1984,Madeline Kahn,Oh Madeline,13,L
+1985,Tom Selleck,"Magnum, P.I.",11,W
+1985,Larry Hagman,Dallas,12,L
+1985,James Brolin,Hotel,12,L
+1985,Stacy Keach,Mike Hammer,11,L
+1985,John Forsythe,Dynasty,13,L
+1985,Daniel J. Travanti,Hill Street Blues,18,L
+1985,Bill Cosby,The Cosby Show,10,W
+1985,Ted Danson,Cheers,10,L
+1985,Bob Newhart,Newhart,11,L
+1985,Robert Guillaume,Benson,16,L
+1985,Sherman Hemsley,The Jeffersons,15,L
+1985,Angela Lansbury,"Murder, She Wrote",15,W
+1985,Joan Collins,Dynasty,12,L
+1985,Kate Jackson,Scarecrow and Mrs. King,12,L
+1985,Sharon Gless,Cagney & Lacey,12,L
+1985,Tyne Daly,Cagney & Lacey,9,L
+1985,Linda Evans,Dynasty,11,L
+1985,Shelley Long,Cheers,12,W
+1985,Susan Clark,Webster,11,L
+1985,Isabel Sanford,The Jeffersons,14,L
+1985,Nell Carter,Gimme a Break!,11,L
+1985,Debbie Allen,Fame,12,L
+1985,Jane Curtin,Kate & Allie,11,L
+1986,Don Johnson,Miami Vice,11,W
+1986,Philip Michael Thomas,Miami Vice,21,L
+1986,Daniel J. Travanti,Hill Street Blues,18,L
+1986,John Forsythe,Dynasty,13,L
+1986,Tom Selleck,"Magnum, P.I.",11,L
+1986,Bill Cosby,The Cosby Show,10,W
+1986,Bruce Willis,Moonlighting,12,L
+1986,Michael J. Fox,Family Ties,14,L
+1986,Bob Newhart,Newhart,11,L
+1986,Tony Danza,Who's the Boss?,10,L
+1986,Sharon Gless,Cagney & Lacey,12,W
+1986,Angela Lansbury,"Murder, She Wrote",15,L
+1986,Linda Evans,Dynasty,11,L
+1986,Tyne Daly,Cagney & Lacey,9,L
+1986,Joan Collins,Dynasty,12,L
+1986,Cybill Shepherd,Moonlighting,15,W
+1986,Estelle Getty,The Golden Girls,13,L
+1986,Betty White,The Golden Girls,11,L
+1986,Bea Arthur,The Golden Girls,10,L
+1986,Rue McClanahan,The Golden Girls,14,L
+1987,Edward Woodward,The Equalizer,15,W
+1987,William Devane,Knots Landing,14,L
+1987,Tom Selleck,"Magnum, P.I.",11,L
+1987,Don Johnson,Miami Vice,11,L
+1987,John Forsythe,Dynasty,13,L
+1987,Bruce Willis,Moonlighting,12,W
+1987,Michael J. Fox,Family Ties,14,L
+1987,Tony Danza,Who's the Boss?,10,L
+1987,Bill Cosby,The Cosby Show,10,L
+1987,Ted Danson,Cheers,10,L
+1987,Angela Lansbury,"Murder, She Wrote",15,W
+1987,Sharon Gless,Cagney & Lacey,12,L
+1987,Connie Sellecca,Hotel,15,L
+1987,Joan Collins,Dynasty,12,L
+1987,Tyne Daly,Cagney & Lacey,9,L
+1987,Cybill Shepherd,Moonlighting,15,W
+1987,Estelle Getty,The Golden Girls,13,L
+1987,Bea Arthur,The Golden Girls,10,L
+1987,Rue McClanahan,The Golden Girls,14,L
+1987,Betty White,The Golden Girls,11,L
+1988,Richard Kiley,A Year in the Life,13,W
+1988,Tom Selleck,"Magnum, P.I.",11,L
+1988,Harry Hamlin,L.A. Law,12,L
+1988,Edward Woodward,The Equalizer,15,L
+1988,Michael Tucker,L.A. Law,14,L
+1988,Dabney Coleman,The Slap Maxwell Story,14,W
+1988,Michael J. Fox,Family Ties,14,L
+1988,John Ritter,Hooperman,11,L
+1988,Bruce Willis,Moonlighting,12,L
+1988,Alan Thicke,Growing Pains,11,L
+1988,Susan Dey,L.A. Law,9,W
+1988,Jill Eikenberry,L.A. Law,15,L
+1988,Angela Lansbury,"Murder, She Wrote",15,L
+1988,Linda Hamilton,Beauty and the Beast,14,L
+1988,Sharon Gless,Cagney & Lacey,12,L
+1988,Tracey Ullman,The Tracey Ullman Show,13,W
+1988,Betty White,The Golden Girls,11,L
+1988,Rue McClanahan,The Golden Girls,14,L
+1988,Bea Arthur,The Golden Girls,10,L
+1988,Cybill Shepherd,Moonlighting,15,L
+1989,Ron Perlman,Beauty and the Beast,11,W
+1989,Corbin Bernsen,L.A. Law,14,L
+1989,Harry Hamlin,L.A. Law,12,L
+1989,Ken Wahl,Wiseguy,8,L
+1989,Carroll O'Connor,In the Heat of the Night,16,L
+1989,Michael J. Fox,Family Ties,14,W
+1989,Judd Hirsch,Dear John USA,11,L
+1989,Richard Mulligan,Empty Nest,16,L
+1989,John Goodman,Roseanne,12,L
+1989,Ted Danson,Cheers,10,L
+1989,Tony Danza,Who's the Boss?,10,L
+1989,Jill Eikenberry,L.A. Law,15,W
+1989,Angela Lansbury,"Murder, She Wrote",15,L
+1989,Susan Dey,L.A. Law,9,L
+1989,Linda Hamilton,Beauty and the Beast,14,L
+1989,Sharon Gless,Cagney & Lacey,12,L
+1989,Candice Bergen,Murphy Brown,14,W
+1989,Roseanne Barr,Roseanne,13,L
+1989,Tracey Ullman,The Tracey Ullman Show,13,L
+1989,Betty White,The Golden Girls,11,L
+1989,Bea Arthur,The Golden Girls,10,L
+1990,Ken Wahl,Wiseguy,8,W
+1990,Carroll O'Connor,In the Heat of the Night,16,L
+1990,Corbin Bernsen,L.A. Law,14,L
+1990,Harry Hamlin,L.A. Law,12,L
+1990,Ken Olin,Thirtysomething,8,L
+1990,Ted Danson,Cheers,10,W
+1990,Fred Savage,The Wonder Years,11,L
+1990,Judd Hirsch,Dear John USA,11,L
+1990,Richard Mulligan,Empty Nest,16,L
+1990,John Goodman,Roseanne,12,L
+1990,Angela Lansbury,"Murder, She Wrote",15,W
+1990,Susan Dey,L.A. Law,9,L
+1990,Mel Harris,Thirtysomething,10,L
+1990,Dana Delany,China Beach,11,L
+1990,Jill Eikenberry,L.A. Law,15,L
+1990,Jamie Lee Curtis,Anything But Love,16,W
+1990,Candice Bergen,Murphy Brown,14,L
+1990,Stephanie Beacham,Sister Kate,17,L
+1990,Kirstie Alley,Cheers,13,L
+1990,Tracey Ullman,The Tracey Ullman Show,13,L
+1991,Kyle MacLachlan,Twin Peaks,15,W
+1991,Carroll O'Connor,In the Heat of the Night,16,L
+1991,Peter Falk,Columbo,10,L
+1991,James Earl Jones,Gabriel's Fire,16,L
+1991,Scott Bakula,Quantum Leap,12,L
+1991,Ted Danson,Cheers,10,W
+1991,Fred Savage,The Wonder Years,11,L
+1991,Burt Reynolds,Evening Shade,13,L
+1991,Richard Mulligan,Empty Nest,16,L
+1991,John Goodman,Roseanne,12,L
+1991,Sharon Gless,The Trials of Rosie O'Neill,12,W
+1991,Patricia Wettig,Thirtysomething,15,L
+1991,Angela Lansbury,"Murder, She Wrote",15,L
+1991,Susan Dey,L.A. Law,9,L
+1991,Jill Eikenberry,L.A. Law,15,L
+1991,Dana Delany,China Beach,11,L
+1991,Kirstie Alley,Cheers,13,W
+1991,Katey Sagal,Married with Children,11,L
+1991,Carol Burnett,Carol & Company,13,L
+1991,Roseanne Barr,Roseanne,13,L
+1991,Candice Bergen,Murphy Brown,14,L
+1992,Scott Bakula,Quantum Leap,12,W
+1992,Mark Harmon,Reasonable Doubts,11,L
+1992,James Earl Jones,Pros and Cons,16,L
+1992,Rob Morrow,Northern Exposure,10,L
+1992,Carroll O'Connor,In the Heat of the Night,16,L
+1992,Sam Waterston,I'll Fly Away,13,L
+1992,Burt Reynolds,Evening Shade,13,W
+1992,Craig T. Nelson,Coach,15,L
+1992,Ted Danson,Cheers,10,L
+1992,Neil Patrick Harris,"Doogie Howser, M.D.",19,L
+1992,Ed O'Neill,Married with Children,10,L
+1992,Angela Lansbury,"Murder, She Wrote",15,W
+1992,Marlee Matlin,Reasonable Doubts,13,L
+1992,Janine Turner,Northern Exposure,13,L
+1992,Sharon Gless,The Trials of Rosie O'Neill,12,L
+1992,Susan Dey,L.A. Law,9,L
+1992,Candice Bergen,Murphy Brown,14,W
+1992,Katey Sagal,Married with Children,11,L
+1992,Jamie Lee Curtis,Anything But Love,16,L
+1992,Roseanne Barr,Roseanne,13,L
+1992,Kirstie Alley,Cheers,13,L
+1993,Sam Waterston,I'll Fly Away,13,W
+1993,Scott Bakula,Quantum Leap,12,L
+1993,Mark Harmon,Reasonable Doubts,11,L
+1993,Rob Morrow,Northern Exposure,10,L
+1993,Jason Priestley,"Beverly Hills, 90210",15,L
+1993,John Goodman,Roseanne,12,W
+1993,Tim Allen,Home Improvement,9,L
+1993,Ted Danson,Cheers,10,L
+1993,Craig T. Nelson,Coach,15,L
+1993,Ed O'Neill,Married with Children,10,L
+1993,Burt Reynolds,Evening Shade,13,L
+1993,Will Smith,The Fresh Prince of Bel-Air,10,L
+1993,Regina Taylor,I'll Fly Away,13,W
+1993,Mariel Hemingway,Civil Wars,16,L
+1993,Angela Lansbury,"Murder, She Wrote",15,L
+1993,Marlee Matlin,Reasonable Doubts,13,L
+1993,Janine Turner,Northern Exposure,13,L
+1993,Roseanne Barr,Roseanne,13,W
+1993,Kirstie Alley,Cheers,13,L
+1993,Candice Bergen,Murphy Brown,14,L
+1993,Helen Hunt,Mad About You,10,L
+1993,Katey Sagal,Married with Children,11,L
+1994,David Caruso,NYPD Blue,12,W
+1994,Michael Moriarty,Law & Order,16,L
+1994,Rob Morrow,Northern Exposure,10,L
+1994,Carroll O'Connor,In the Heat of the Night,16,L
+1994,Tom Skerritt,Picket Fences,12,L
+1994,Jerry Seinfeld,Seinfeld,14,W
+1994,Tim Allen,Home Improvement,9,L
+1994,Kelsey Grammer,Frasier,14,L
+1994,Craig T. Nelson,Coach,15,L
+1994,Will Smith,The Fresh Prince of Bel-Air,10,L
+1994,Kathy Baker,Picket Fences,11,W
+1994,Heather Locklear,Melrose Place,16,L
+1994,Jane Seymour,"Dr. Quinn, Medicine Woman",12,L
+1994,Janine Turner,Northern Exposure,13,L
+1994,Sela Ward,Sisters,9,L
+1994,Helen Hunt,Mad About You,10,W
+1994,Roseanne Barr,Roseanne,13,L
+1994,Candice Bergen,Murphy Brown,14,L
+1994,Patricia Richardson,Home Improvement,19,L
+1994,Katey Sagal,Married with Children,11,L
+1995,Dennis Franz,NYPD Blue,12,W
+1995,Mandy Patinkin,Chicago Hope,14,L
+1995,Jason Priestley,"Beverly Hills, 90210",15,L
+1995,Tom Skerritt,Picket Fences,12,L
+1995,Sam Waterston,Law & Order,13,L
+1995,Tim Allen,Home Improvement,9,W
+1995,Kelsey Grammer,Frasier,14,L
+1995,Craig T. Nelson,Coach,15,L
+1995,Paul Reiser,Mad About You,11,L
+1995,Jerry Seinfeld,Seinfeld,14,L
+1995,Garry Shandling,The Larry Sanders Show,15,L
+1995,Claire Danes,My So-Called Life,12,W
+1995,Kathy Baker,Picket Fences,11,L
+1995,Angela Lansbury,"Murder, She Wrote",15,L
+1995,Heather Locklear,Melrose Place,16,L
+1995,Jane Seymour,"Dr. Quinn, Medicine Woman",12,L
+1995,Helen Hunt,Mad About You,10,W
+1995,Candice Bergen,Murphy Brown,14,L
+1995,Brett Butler,Grace Under Fire,12,L
+1995,Ellen DeGeneres,Ellen,15,L
+1995,Patricia Richardson,Home Improvement,19,L
+1996,Jimmy Smits,NYPD Blue,11,W
+1996,Daniel Benzali,Murder One,14,L
+1996,George Clooney,ER,14,L
+1996,David Duchovny,The X Files,14,L
+1996,Anthony Edwards,ER,15,L
+1996,Kelsey Grammer,Frasier,14,W
+1996,Tim Allen,Home Improvement,9,L
+1996,Paul Reiser,Mad About You,11,L
+1996,Jerry Seinfeld,Seinfeld,14,L
+1996,Garry Shandling,The Larry Sanders Show,15,L
+1996,Jane Seymour,"Dr. Quinn, Medicine Woman",12,W
+1996,Gillian Anderson,The X Files,16,L
+1996,Kathy Baker,Picket Fences,11,L
+1996,Heather Locklear,Melrose Place,16,L
+1996,Sherry Stringfield,ER,18,L
+1996,Cybill Shepherd,Cybill,15,W
+1996,Candice Bergen,Murphy Brown,14,L
+1996,Ellen DeGeneres,Ellen,15,L
+1996,Fran Drescher,The Nanny,13,L
+1996,Helen Hunt,Mad About You,10,L
+1997,David Duchovny,The X Files,14,W
+1997,George Clooney,ER,14,L
+1997,Anthony Edwards,ER,15,L
+1997,Lance Henriksen,Millennium,15,L
+1997,Jimmy Smits,NYPD Blue,11,L
+1997,John Lithgow,3rd Rock from the Sun,12,W
+1997,Tim Allen,Home Improvement,9,L
+1997,Michael J. Fox,Spin City,14,L
+1997,Kelsey Grammer,Frasier,14,L
+1997,Paul Reiser,Mad About You,11,L
+1997,Gillian Anderson,The X Files,16,W
+1997,Christine Lahti,Chicago Hope,15,L
+1997,Heather Locklear,Melrose Place,16,L
+1997,Jane Seymour,"Dr. Quinn, Medicine Woman",12,L
+1997,Sherry Stringfield,ER,18,L
+1997,Helen Hunt,Mad About You,10,W
+1997,Brett Butler,Grace Under Fire,12,L
+1997,Fran Drescher,The Nanny,13,L
+1997,Cybill Shepherd,Cybill,15,L
+1997,Brooke Shields,Suddenly Susan,14,L
+1997,Tracey Ullman,Tracey Takes On...,13,L
+1998,Anthony Edwards,ER,15,W
+1998,Kevin Anderson,Nothing Sacred,14,L
+1998,George Clooney,ER,14,L
+1998,David Duchovny,The X Files,14,L
+1998,Lance Henriksen,Millennium,15,L
+1998,Michael J. Fox,Spin City,14,W
+1998,Kelsey Grammer,Frasier,14,L
+1998,John Lithgow,3rd Rock from the Sun,12,L
+1998,Paul Reiser,Mad About You,11,L
+1998,Jerry Seinfeld,Seinfeld,14,L
+1998,Christine Lahti,Chicago Hope,15,W
+1998,Gillian Anderson,The X Files,16,L
+1998,Kim Delaney,NYPD Blue,11,L
+1998,Roma Downey,Touched by an Angel,11,L
+1998,Julianna Margulies,ER,18,L
+1998,Calista Flockhart,Ally McBeal,17,W
+1998,Kirstie Alley,Veronica's Closet,13,L
+1998,Jenna Elfman,Dharma & Greg,12,L
+1998,Helen Hunt,Mad About You,10,L
+1998,Brooke Shields,Suddenly Susan,14,L
+1998,Ellen DeGeneres,Ellen,15,L
+1999,Dylan McDermott,The Practice,15,W
+1999,David Duchovny,The X Files,14,L
+1999,Anthony Edwards,ER,15,L
+1999,Lance Henriksen,Millennium,15,L
+1999,Jimmy Smits,NYPD Blue,11,L
+1999,Michael J. Fox,Spin City,14,W
+1999,Thomas Gibson,Dharma & Greg,13,L
+1999,Kelsey Grammer,Frasier,14,L
+1999,John Lithgow,3rd Rock from the Sun,12,L
+1999,George Segal,Just Shoot Me!,12,L
+1999,Keri Russell,Felicity,12,W
+1999,Gillian Anderson,The X Files,16,L
+1999,Kim Delaney,NYPD Blue,11,L
+1999,Roma Downey,Touched by an Angel,11,L
+1999,Julianna Margulies,ER,18,L
+1999,Jenna Elfman,Dharma & Greg,12,W
+1999,Christina Applegate,Jesse,19,L
+1999,Calista Flockhart,Ally McBeal,17,L
+1999,Laura San Giacomo,Just Shoot Me!,17,L
+1999,Sarah Jessica Parker,Sex and the City,20,L
+2000,James Gandolfini,The Sopranos,16,W
+2000,Billy Campbell,Once and Again,14,L
+2000,Rob Lowe,The West Wing,8,L
+2000,Dylan McDermott,The Practice,15,L
+2000,Martin Sheen,The West Wing,12,L
+2000,Michael J. Fox,Spin City,14,W
+2000,Thomas Gibson,Dharma & Greg,13,L
+2000,Eric McCormack,Will & Grace,14,L
+2000,Ray Romano,Everybody Loves Raymond,10,L
+2000,George Segal,Just Shoot Me!,12,L
+2000,Edie Falco,The Sopranos,10,W
+2000,Lorraine Bracco,The Sopranos,15,L
+2000,Amy Brenneman,Judging Amy,13,L
+2000,Julianna Margulies,ER,18,L
+2000,Sela Ward,Once and Again,9,L
+2000,Sarah Jessica Parker,Sex and the City,20,W
+2000,Jenna Elfman,Dharma & Greg,12,L
+2000,Calista Flockhart,Ally McBeal,17,L
+2000,Felicity Huffman,Sports Night,16,L
+2000,Heather Locklear,Spin City,16,L
+2000,Debra Messing,Will & Grace,13,L
+2001,Martin Sheen,The West Wing,12,W
+2001,Andre Braugher,Gideon's Crossing,14,L
+2001,Dylan McDermott,The Practice,15,L
+2001,James Gandolfini,The Sopranos,16,L
+2001,Rob Lowe,The West Wing,8,L
+2001,Kelsey Grammer,Frasier,14,W
+2001,Ted Danson,Becker,10,L
+2001,Ray Romano,Everybody Loves Raymond,10,L
+2001,Frankie Muniz,Malcolm in the Middle,13,L
+2001,Eric McCormack,Will & Grace,14,L
+2001,Sela Ward,Once and Again,9,W
+2001,Sarah Michelle Gellar,Buffy the Vampire Slayer,21,L
+2001,Jessica Alba,Dark Angel,12,L
+2001,Amy Brenneman,Judging Amy,13,L
+2001,Lorraine Bracco,The Sopranos,15,L
+2001,Edie Falco,The Sopranos,10,L
+2001,Sarah Jessica Parker,Sex and the City,20,W
+2001,Calista Flockhart,Ally McBeal,17,L
+2001,Bette Midler,Bette,12,L
+2001,Jane Kaczmarek,Malcolm in the Middle,14,L
+2001,Debra Messing,Will & Grace,13,L
+2002,Kiefer Sutherland,24,17,W
+2002,Simon Baker,The Guardian,11,L
+2002,Peter Krause,Six Feet Under,12,L
+2002,James Gandolfini,The Sopranos,16,L
+2002,Martin Sheen,The West Wing,12,L
+2002,Charlie Sheen,Spin City,13,W
+2002,Tom Cavanagh,Ed,12,L
+2002,Kelsey Grammer,Frasier,14,L
+2002,Frankie Muniz,Malcolm in the Middle,13,L
+2002,Eric McCormack,Will & Grace,14,L
+2002,Jennifer Garner,Alias,15,W
+2002,Marg Helgenberger,CSI: Crime Scene Investigation,17,L
+2002,Lauren Graham,Gilmore Girls,13,L
+2002,Amy Brenneman,Judging Amy,13,L
+2002,Sela Ward,Once and Again,9,L
+2002,Lorraine Bracco,The Sopranos,15,L
+2002,Edie Falco,The Sopranos,10,L
+2002,Sarah Jessica Parker,Sex and the City,20,W
+2002,Calista Flockhart,Ally McBeal,17,L
+2002,Jane Kaczmarek,Malcolm in the Middle,14,L
+2002,Heather Locklear,Spin City,16,L
+2002,Debra Messing,Will & Grace,13,L
+2003,Michael Chiklis,The Shield,15,W
+2003,Kiefer Sutherland,24,17,L
+2003,Peter Krause,Six Feet Under,12,L
+2003,James Gandolfini,The Sopranos,16,L
+2003,Martin Sheen,The West Wing,12,L
+2003,Tony Shalhoub,Monk,13,W
+2003,Bernie Mac,The Bernie Mac Show,10,L
+2003,Larry David,Curb Your Enthusiasm,11,L
+2003,Matt LeBlanc,Friends,12,L
+2003,Eric McCormack,Will & Grace,14,L
+2003,Edie Falco,The Sopranos,10,W
+2003,Jennifer Garner,Alias,15,L
+2003,Marg Helgenberger,CSI: Crime Scene Investigation,17,L
+2003,Rachel Griffiths,Six Feet Under,16,L
+2003,Allison Janney,The West Wing,14,L
+2003,Jennifer Aniston,Friends,16,W
+2003,Bonnie Hunt,Life with Bonnie,11,L
+2003,Jane Kaczmarek,Malcolm in the Middle,14,L
+2003,Sarah Jessica Parker,Sex and the City,20,L
+2003,Debra Messing,Will & Grace,13,L
+2004,Anthony LaPaglia,Without a Trace,16,W
+2004,Kiefer Sutherland,24,17,L
+2004,William Petersen,CSI: Crime Scene Investigation,16,L
+2004,Michael Chiklis,The Shield,15,L
+2004,Martin Sheen,The West Wing,12,L
+2004,Ricky Gervais,The Office,13,W
+2004,Bernie Mac,The Bernie Mac Show,10,L
+2004,Matt LeBlanc,Friends,12,L
+2004,Tony Shalhoub,Monk,13,L
+2004,Eric McCormack,Will & Grace,14,L
+2004,Frances Conroy,Six Feet Under,14,W
+2004,Jennifer Garner,Alias,15,L
+2004,Amber Tamblyn,Joan of Arcadia,13,L
+2004,Joely Richardson,Nip/Tuck,16,L
+2004,Allison Janney,The West Wing,14,L
+2004,Sarah Jessica Parker,Sex and the City,20,W
+2004,Bonnie Hunt,Life with Bonnie,11,L
+2004,Alicia Silverstone,Miss Match,18,L
+2004,Bitty Schram,Monk,12,L
+2004,Reba McEntire,Reba,13,L
+2004,Debra Messing,Will & Grace,13,L
+2005,Ian McShane,Deadwood,11,W
+2005,James Spader,Boston Legal,12,L
+2005,Julian McMahon,Nip/Tuck,14,L
+2005,Denis Leary,Rescue Me,11,L
+2005,Michael Chiklis,The Shield,15,L
+2005,Jason Bateman,Arrested Development,13,W
+2005,Larry David,Curb Your Enthusiasm,11,L
+2005,Matt LeBlanc,Joey,12,L
+2005,Tony Shalhoub,Monk,13,L
+2005,Zach Braff,Scrubs,10,L
+2005,Charlie Sheen,Two and a Half Men,13,L
+2005,Mariska Hargitay,Law & Order: Special Victims Unit,16,W
+2005,Jennifer Garner,Alias,15,L
+2005,Christine Lahti,Jack & Bobby,15,L
+2005,Joely Richardson,Nip/Tuck,16,L
+2005,Edie Falco,The Sopranos,10,L
+2005,Teri Hatcher,Desperate Housewives,12,W
+2005,Marcia Cross,Desperate Housewives,12,L
+2005,Felicity Huffman,Desperate Housewives,16,L
+2005,Sarah Jessica Parker,Sex and the City,20,L
+2005,Debra Messing,Will & Grace,13,L
+2006,Hugh Laurie,House,11,W
+2006,Kiefer Sutherland,24,17,L
+2006,Patrick Dempsey,Grey's Anatomy,15,L
+2006,Matthew Fox,Lost,11,L
+2006,Wentworth Miller,Prison Break,16,L
+2006,Steve Carell,The Office,12,W
+2006,Larry David,Curb Your Enthusiasm,11,L
+2006,Jason Lee,My Name Is Earl,9,L
+2006,Zach Braff,Scrubs,10,L
+2006,Charlie Sheen,Two and a Half Men,13,L
+2006,Geena Davis,Commander in Chief,11,W
+2006,Kyra Sedgwick,The Closer,13,L
+2006,Patricia Arquette,Medium,17,L
+2006,Polly Walker,Rome,12,L
+2006,Glenn Close,The Shield,11,L
+2006,Mary-Louise Parker,Weeds,18,W
+2006,Marcia Cross,Desperate Housewives,12,L
+2006,Teri Hatcher,Desperate Housewives,12,L
+2006,Felicity Huffman,Desperate Housewives,16,L
+2006,Eva Longoria,Desperate Housewives,12,L
+2007,Hugh Laurie,House,11,W
+2007,Kiefer Sutherland,24,17,L
+2007,Bill Paxton,Big Love,11,L
+2007,Michael C. Hall,Dexter,15,L
+2007,Patrick Dempsey,Grey's Anatomy,15,L
+2007,Alec Baldwin,30 Rock,12,W
+2007,Tony Shalhoub,Monk,13,L
+2007,Jason Lee,My Name Is Earl,9,L
+2007,Steve Carell,The Office,12,L
+2007,Zach Braff,Scrubs,10,L
+2007,Kyra Sedgwick,The Closer,13,W
+2007,Ellen Pompeo,Grey's Anatomy,12,L
+2007,Evangeline Lilly,Lost,16,L
+2007,Patricia Arquette,Medium,17,L
+2007,Edie Falco,The Sopranos,10,L
+2007,America Ferrera,Ugly Betty,15,W
+2007,Marcia Cross,Desperate Housewives,12,L
+2007,Felicity Huffman,Desperate Housewives,16,L
+2007,Julia Louis-Dreyfus,The New Adventures of Old Christine,19,L
+2007,Mary-Louise Parker,Weeds,18,L
+2008,Jon Hamm,Mad Men,8,W
+2008,Bill Paxton,Big Love,11,L
+2008,Michael C. Hall,Dexter,15,L
+2008,Hugh Laurie,House,11,L
+2008,Jonathan Rhys Meyers,The Tudors,20,L
+2008,David Duchovny,Californication,14,W
+2008,Alec Baldwin,30 Rock,12,L
+2008,Ricky Gervais,Extras,13,L
+2008,Steve Carell,The Office,12,L
+2008,Lee Pace,Pushing Daisies,8,L
+2008,Glenn Close,Damages,11,W
+2008,Sally Field,Brothers & Sisters,11,L
+2008,Kyra Sedgwick,The Closer,13,L
+2008,Patricia Arquette,Medium,17,L
+2008,Minnie Driver,The Riches,13,L
+2008,Holly Hunter,Saving Grace,12,L
+2008,Edie Falco,The Sopranos,10,L
+2008,Tina Fey,30 Rock,8,W
+2008,Anna Friel,Pushing Daisies,10,L
+2008,Christina Applegate,Samantha Who?,19,L
+2008,America Ferrera,Ugly Betty,15,L
+2008,Mary-Louise Parker,Weeds,18,L
+2009,Gabriel Byrne,In Treatment,13,W
+2009,Michael C. Hall,Dexter,15,L
+2009,Hugh Laurie,House,11,L
+2009,Jon Hamm,Mad Men,8,L
+2009,Jonathan Rhys Meyers,The Tudors,20,L
+2009,Alec Baldwin,30 Rock,12,W
+2009,David Duchovny,Californication,14,L
+2009,Kevin Connolly,Entourage,14,L
+2009,Tony Shalhoub,Monk,13,L
+2009,Steve Carell,The Office,12,L
+2009,Anna Paquin,True Blood,11,W
+2009,Sally Field,Brothers & Sisters,11,L
+2009,Kyra Sedgwick,The Closer,13,L
+2009,Mariska Hargitay,Law & Order: Special Victims Unit,16,L
+2009,January Jones,Mad Men,13,L
+2009,Tina Fey,30 Rock,8,W
+2009,Christina Applegate,Samantha Who?,19,L
+2009,Debra Messing,The Starter Wife,13,L
+2009,America Ferrera,Ugly Betty,15,L
+2009,Mary-Louise Parker,Weeds,18,L
+2010,Michael C. Hall,Dexter,15,W
+2010,Bill Paxton,Big Love,11,L
+2010,Hugh Laurie,House,11,L
+2010,Jon Hamm,Mad Men,8,L
+2010,Simon Baker,The Mentalist,11,L
+2010,Alec Baldwin,30 Rock,12,W
+2010,David Duchovny,Californication,14,L
+2010,Matthew Morrison,Glee,16,L
+2010,Thomas Jane,Hung,11,L
+2010,Steve Carell,The Office,12,L
+2010,Julianna Margulies,The Good Wife,18,W
+2010,Glenn Close,Damages,11,L
+2010,January Jones,Mad Men,13,L
+2010,Kyra Sedgwick,The Closer,13,L
+2010,Anna Paquin,True Blood,11,L
+2010,Toni Collette,United States of Tara,13,W
+2010,Tina Fey,30 Rock,8,L
+2010,Courteney Cox,Cougar Town,13,L
+2010,Lea Michele,Glee,11,L
+2010,Edie Falco,Nurse Jackie,10,L
+2011,Steve Buscemi,Boardwalk Empire,13,W
+2011,Bryan Cranston,Breaking Bad,14,L
+2011,Michael C. Hall,Dexter,15,L
+2011,Jon Hamm,Mad Men,8,L
+2011,Hugh Laurie,House,11,L
+2011,Jim Parsons,The Big Bang Theory,11,W
+2011,Alec Baldwin,30 Rock,12,L
+2011,Steve Carell,The Office,12,L
+2011,Thomas Jane,Hung,11,L
+2011,Matthew Morrison,Glee,16,L
+2011,Katey Sagal,Sons of Anarchy,11,W
+2011,Julianna Margulies,The Good Wife,18,L
+2011,Elisabeth Moss,Mad Men,14,L
+2011,Piper Perabo,Covert Affairs,12,L
+2011,Kyra Sedgwick,The Closer,13,L
+2011,Laura Linney,The Big C,12,W
+2011,Toni Collette,United States of Tara,13,L
+2011,Edie Falco,Nurse Jackie,10,L
+2011,Tina Fey,30 Rock,8,L
+2011,Lea Michele,Glee,11,L
+2012,Kelsey Grammer,Boss,14,W
+2012,Steve Buscemi,Boardwalk Empire,13,L
+2012,Bryan Cranston,Breaking Bad,14,L
+2012,Jeremy Irons,The Borgias,12,L
+2012,Damian Lewis,Homeland,12,L
+2012,Matt LeBlanc,Episodes,12,W
+2012,Alec Baldwin,30 Rock,12,L
+2012,David Duchovny,Californication,14,L
+2012,Johnny Galecki,The Big Bang Theory,14,L
+2012,Thomas Jane,Hung,11,L
+2012,Claire Danes,Homeland,12,W
+2012,Mireille Enos,The Killing,13,L
+2012,Julianna Margulies,The Good Wife,18,L
+2012,Madeleine Stowe,Revenge,15,L
+2012,Callie Thorne,Necessary Roughness,13,L
+2012,Laura Dern,Enlightened,10,W
+2012,Zooey Deschanel,New Girl,15,L
+2012,Tina Fey,30 Rock,8,L
+2012,Laura Linney,The Big C,12,L
+2012,Amy Poehler,Parks and Recreation,11,L
+2013,Damian Lewis,Homeland,12,W
+2013,Steve Buscemi,Boardwalk Empire,13,L
+2013,Bryan Cranston,Breaking Bad,14,L
+2013,Jeff Daniels,The Newsroom,12,L
+2013,Jon Hamm,Mad Men,8,L
+2013,Don Cheadle,House of Lies,11,W
+2013,Alec Baldwin,30 Rock,12,L
+2013,Louis C.K.,Louie,10,L
+2013,Matt LeBlanc,Episodes,12,L
+2013,Jim Parsons,The Big Bang Theory,11,L
+2013,Claire Danes,Homeland,12,W
+2013,Connie Britton,Nashville,14,L
+2013,Glenn Close,Damages,11,L
+2013,Michelle Dockery,Downton Abbey,16,L
+2013,Julianna Margulies,The Good Wife,18,L
+2013,Lena Dunham,Girls,11,W
+2013,Zooey Deschanel,New Girl,15,L
+2013,Tina Fey,30 Rock,8,L
+2013,Julia Louis-Dreyfus,Veep,19,L
+2013,Amy Poehler,Parks and Recreation,11,L
+2014,Bryan Cranston,Breaking Bad,14,W
+2014,Kevin Spacey,House of Cards,12,L
+2014,Liev Schreiber,Ray Donovan,14,L
+2014,Michael Sheen,Masters of Sex,13,L
+2014,James Spader,The Blacklist,12,L
+2014,Andy Samberg,Brooklyn Nine-Nine,12,W
+2014,Don Cheadle,House of Lies,11,L
+2014,Jason Bateman,Arrested Development,13,L
+2014,Jim Parsons,The Big Bang Theory,11,L
+2014,Michael J. Fox,The Michael J. Fox Show,14,L
+2014,Robin Wright,House of Cards,12,W
+2014,Julianna Margulies,The Good Wife,18,L
+2014,Kerry Washington,Scandal,16,L
+2014,Tatiana Maslany,Orphan Black,15,L
+2014,Taylor Schilling,Orange Is the New Black,16,L
+2014,Amy Poehler,Parks and Recreation,11,W
+2014,Lena Dunham,Girls,11,L
+2014,Edie Falco,Nurse Jackie,10,L
+2014,Julia Louis-Dreyfus,Veep,19,L
+2014,Zooey Deschanel,New Girl,15,L
+2015,Kevin Spacey,House of Cards,12,W
+2015,Clive Owen,The Knick,10,L
+2015,Dominic West,The Affair,12,L
+2015,James Spader,The Blacklist,12,L
+2015,Liev Schreiber,Ray Donovan,14,L
+2015,Jeffrey Tambor,Transparent,14,W
+2015,Louis C.K.,Louie,10,L
+2015,William H. Macy,Shameless,15,L
+2015,Ricky Gervais,Derek,13,L
+2015,Don Cheadle,House of Lies,11,L
+2015,Ruth Wilson,The Affair,11,W
+2015,Claire Danes,Homeland,12,L
+2015,Viola Davis,How to Get Away with Murder,11,L
+2015,Julianna Margulies,The Good Wife,18,L
+2015,Robin Wright,House of Cards,12,L
+2015,Gina Rodriguez,Jane the Virgin,14,W
+2015,Taylor Schilling,Orange Is the New Black,16,L
+2015,Julia Louis-Dreyfus,Veep,19,L
+2015,Edie Falco,Nurse Jackie,10,L
+2015,Lena Dunham,Girls,11,L

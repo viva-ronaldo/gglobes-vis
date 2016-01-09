@@ -22,4 +22,19 @@ Plots:
     are fairly flat up to ~s8. Wins come overly from s1-3. So 
     many shows continue to s8-9 but rarely win past s5. Only
     a handful of cases winning s6+, recently Breaking Bad.
-- Wins by point in run?
+- Last name alphabetical order: [49,29,21,36,41]. So the
+    effect is more robust than with first names. Also the last
+    in the list is possible favoured a little, and the one in
+    the middle overlooked. 4% chance of any being 49+, 
+    54% of any being 42+ (so ~10% of last one),
+    9% of any being <=24.
+- Person wins by name length: by a similar token there seems
+    to be a preference for the shortest name. Totals by
+    name length ranking are [48,32,34,35,27], so the shortest
+    name definitely has an advantage and the longest may have 
+    some disadvantage relative to 2-4. Chance of 49/176 is
+    about 4% so fairly confident this is caused by name length.
+
+90% max and mins for any of the 5 with 176 instances are
+  46 and 25 to the nearest one. 90% levels for any one position
+  are 42 and 28.
