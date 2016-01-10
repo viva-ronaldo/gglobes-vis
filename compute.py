@@ -392,9 +392,17 @@ if 1:
         if l in showLengths.keys():
             runLengthFracs[l-1] = 100 * showLengths[l] / np.float(sum(showLengths.values()))
         else:
-            runLengthFracs[l-1] = 0.    
+            runLengthFracs[l-1] = 0.
+    #estimate how many of each season are running in a given year
+    onNowFracs = [0]*15
+    for seas in range(1,16):
+        onNowFracs[seas-1] = sum([(f/100.)*1/float(s) 
+            for (f,s) in zip(runLengthFracs[(seas-1):],range(seas,16))])
+    #have covered almost all by season 15, just a few possibly erroneous ones left
+    onNowFracs = [s*1/sum(onNowFracs) for s in onNowFracs]
+    expWinsBySeas = [f*sum(winBySeason.values()) for f in onNowFracs]
     plt.plot(range(1,16),winBySeason.values(),'ks',ms=10)
-    plt.plot(range(1,16),runLengthFracs,'g--',lw=2,label='Total run length')
+    plt.plot(range(1,16),expWinsBySeas,'g--',lw=2,label='Total run length')
     plt.xlim([0.5,12.5])
     plt.xlabel('Season'); plt.ylabel('Fraction')
     plt.legend(loc='upper right')
@@ -441,11 +449,11 @@ if 1 and len(years) >= 3 and \
     with open('%i-%i_winBySeason.csv' % (years[0],years[-1]),
         'w') as csvfile:
         mywriter = csv.writer(csvfile)
-        mywriter.writerow(['season','numWins','numTot','winFrac','fracShows'])
+        mywriter.writerow(['season','numWins','numTot','winFrac','expWins'])
         for i in range(1,12):
             mywriter.writerow([i,winBySeason[i],
                 winBySeason[i]+loseBySeason[i],
-                winFracBySeason[i-1],runLengthFracs[i-1]])
+                winFracBySeason[i-1],expWinsBySeas[i-1]])
 
     with open('%i-%i_nameLengths.csv' % (years[0],years[-1]),
         'w') as csvfile:
