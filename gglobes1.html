@@ -1,4 +1,6 @@
 <head>
+  <title>Golden Globe Awards Patterns</title>
+
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
   <!--bootstrap links for toggle tabs-->
@@ -10,6 +12,9 @@
   <style>
     body {
       width: 100%;
+    }
+    h1 {
+      text-align: center;
     }
     h2 {
       text-align: center;
@@ -41,15 +46,17 @@
 
 </head>
 
-<!--TODO: rejig tabs as tab 2+ charts are not rendering -->
-
 <body>
 
   <div class="container">
-    <h2>Golden Globe Awards Patterns</h2>
+    <h1>Golden Globe TV Awards Patterns</h1>
     <p>To coincide with tonight's 2016 <a href="http://www.goldenglobes.com">Golden Globes</a> ceremony I've put together some visualisations of previous award data in the main TV categories, in which the same nominees tend to appear repeatedly over successive years. I wanted to find out if the voting patterns show any 'memory' of previous awards; that is, does winning one or more times in the first few nominations make a nominee less likely to win in subsequent years? And at what point in a show's run is it most likely to win awards?</p>
 
+    <p>The results show that there is a compensatory effect in the voting, whereby voters prefer to spread the awards around multiple nominees where possible. Also, awards for TV Series seem to go disproportionately to shows in their first three seasons, possibly as a result of this 'voter fatigue', combined with a typical decline in quality in later seasons of a run. Other interesting voting trends around actors' and actresses' names were also found.</p>
+
     <p>Golden Globe nominee and winner data for 1972-2015 were obtained from <a href="http://www.imdb.com">IMDB</a>. The categories of TV Series, Actor in a TV Series and Actress in a TV Series, in both the Drama and Comedy/Musical forms, were included, making for a total of 274 cases, including several ties. The plots are done using <a href="https://d3js.org">D3.js</a>, including the <a href="http://www.dimplejs.org">dimple.js</a> library, as an exercise in learning how to use this framework.</p>
+
+    <p><i>In five of the tabs, a thick horizontal line marks the average win rate or number of wins. Thin lines above and below mark the 90% confidence levels around this average; that is, there is a 10% that at least one of the bars will reach this level purely by chance. If wins do not depend on the x-axis variable, we would normally expect all bars to lie within the thin lines, so if one or more bars is close to or outside these lines, this is a sign of a significant statistical anomaly in the win rate or total number of wins. (For the first three tabs these lines are rough estimates only, since there are different numbers of samples in each x-axis bin.) In the 'By season' tab, a thick line similarly shows the expected number of wins; see the tab for further explanation.</i></p>
 
     <ul class='nav nav-tabs'>
       <li class="active"><a data-toggle="tab" href="#home" class="mhtab">Previous nominations</a></li>
@@ -68,7 +75,7 @@
 
       </div>
       <div id="textholdh" class="textholder">
-        <p>The win rate decreases as the number of previous nominations increases from none to four, hinting that previous winners may be less likely to win than those who haven't yet won an award. As a result, the odds of winning for a first-time nominee are slightly better than the one-in-five that would be expected given that there are (usually) five nominees. Win rate increases again at higher numbers of nominations (though the samples are small at 7 nominations and above), probably because to be nominated so frequently the show or actor/actress must be generally popular among the voters.</p>
+        <p>The win rate decreases as the number of previous nominations increases from none to four, hinting that previous winners may be less likely to win than those who haven't yet won an award. As a result, the odds of winning for a first-time nominee are slightly better than the one-in-five that would be expected given that there are (usually) five nominees. Win rate increases again at higher numbers of nominations (though the samples are small at 7 nominations and above), but it is not clear yet whether this is due to a trend for multiple winners or multiple losers (see next tabs).</p>
       </div>
     </div>
     <div id="menu1" class="tab-pane fade">
@@ -87,7 +94,7 @@
 
       </div>
       <div id="texthold2" class="textholder">
-        <p>Against previous losses, there is a suggestion that the win fraction begins to increase once this gets to 3, which is further evidence of compensatory voting favouring those that have been unsuccessful in the past. The sample numbers at 6 and 7 losses too small to give reliable win fractions.</p>
+        <p>A nominee's chances decline as they accumulate previous losing nominations up to three, but beyond this it appears that the win rate increases (though the sample numbers at 6 and 7 losses are too small to give reliable win rates), presumably due to compensatory voting favouring those that have been unsuccessful in the past. So having several unsuccessful visits to the ceremony in the past is no cause for despair for a nominee.</p>
       </div>
     </div>
     <div id="menu3" class="tab-pane fade">
@@ -97,7 +104,7 @@
       </div>
       <div id="texthold3" class="textholder">
       <!--<h3>Golden Globe Wins By Show Year</h3>-->
-        <p>A different trend in voting is revealed here: wins (counting only the Drama Series and Comedy/Musical Series here) come overwhelmingly from shows in their first 3 seasons, with the greatest chance of winning coming in a show's first year. This is despite the fact that a substantial fraction of the shows nominated continue for 6-9 seasons (meaning that, in any given year, the expected number of wins by season should follow the green line; though see below). This is suggestive of one or both of voter fatigue after multiple wins in a show's early years, or a decline in quality in the later years of a run. While more than half the shows nominated ran for 6 or more years (perhaps largely on the back of successes in their early years, only a handful won any awards beyond their fifth season. These individual cases are visible in the tooltips for the respective seasons.</p>
+        <p>A different trend in voting is revealed here: wins (counting only the Drama Series and Comedy/Musical Series this time) come overwhelmingly from shows in their first 3 seasons, with the greatest chance of winning coming in a show's first year. This is despite the fact that a substantial fraction of the shows nominated continue for 6-9 seasons (meaning that, in any given year, the expected number of wins by season should follow the green line; though see below). This is suggestive of one or both of voter fatigue after multiple wins in a show's early years, or a decline in quality in the later years of a run. While more than half the shows nominated ran for 6 or more years (perhaps largely on the back of successes in their early years, only a handful won any awards beyond their fifth season. These individual cases are visible in the tooltips for the respective seasons.</p>
 
         <p><i>The green line is an estimate of how many shows of each season are running at any time, made using the total lengths of all the shows in the nomination list. The line is flat at seasons 1-2 because none of the nominated shows were cancelled after their first season (unsurprisingly), meaning that a given year is equally likely to contain season twos as season ones. The true distribution is likely to be steeper at the low end, owing to the large amount of shows that never make it past season one. So, while the sheer number of season ones running at any time might seem to explain the larger win fraction for season one, it must be remembered that many of these are not real award contenders, by virtue of the fact that they were never nominated. The green line really represents the distribution for all shows that are considered 'a success', as judged by being nominated at some point in their lifetime. In this context, the bars lying below this line at seasons 4-8 tell us that successful shows rarely receive credit in the form of awards beyond their third season.
         </i></p>
@@ -109,11 +116,11 @@
 
       </div>
       <div id="texthold4" class="textholder">
-        <p>A more mundane trend in voting is apparently revealed when the groups of five nominees in the four acting categories are ordered alphabetically by surname. It turns out that the nominee appearing first alphabetically has a greater chance of winning (28%) than the 20% chance that would be expected if surname played no role in voting. The probability of any of the five positions in the list reaching 49 wins in the 176 instances considered here by chance is only 0.04, so there is good reason to believe that this is evidence of a real bias in voting. Presumably nominees are, or were in the past, listed alphabetically when presented to voters, who are unconsciously biased towards the first name they read. In a purely statistical sense, this presumably enhanced the chances of Alan Alda, for example, which, combined with the length of his surname (see next tab), could go some way to accounting for his six wins!</p>
+        <p>A more mundane trend in voting is apparently revealed when the groups of five nominees in the four acting categories are ordered alphabetically by surname. It turns out that the nominee appearing first alphabetically has a greater chance of winning (28%) than the 20% chance that would be expected if surname played no role in voting. Looking at the 90% confidence levels shown by the thin horizontal lines, there is good reason to believe that this is evidence of a real bias in voting. Presumably nominees are, or were in the past, listed alphabetically when presented to voters, who are unconsciously biased towards the first name they read. In a purely statistical sense, this enhanced the chances of Alan Alda, for example, by as much as 40%, which, combined with the length of his surname (another 40% boost; see next tab), is enough to account for two or three of his six wins!</p>
 
-        <p>Interestingly, the name appearing last in the list also seems to gain a small advantage, at the expense of the nominee in the middle of the list. The third-listed nominee has won on only 21 occasions, a number that would be expected to arise by chance with a probability of only 0.02. It seems plausible that a positive bias could also exist towards the last name that a voter reads.</p>
+        <p>Interestingly, the name appearing last in the list also seems to gain a small advantage, at the expense of the nominee in the middle of the list. The third-listed nominee has won on only 21 occasions, far below the expected 35 wins for this sample. It seems plausible that a positive bias could also exist towards the last name that a voter reads, though not as strongly as with the first name.</p>
 
-        <p><i>The solid line in the plot shows the mean number of wins expected in each position by chance, and the dashed lines show the 90% confidence levels around this value for the five cases combined (i.e. there is a 10% probability of one of the five bars reaching these lines purely by chance). Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively.</i></p>
+        <p><i>Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively.</i></p>
       </div>
     </div>
     <div id="menu5" class="tab-pane fade">
@@ -122,9 +129,9 @@
 
       </div>
       <div id="texthold5" class="textholder">
-        <p>The length of an actor or actress's name (including spaces) also appears to have an affect on his or her chances of winning. In the four categories considered, on 27% of occasions (48 out of 176) was the nominee with the shortest name successful. The probability of such a large excursion from the expected ~20% win rate occurring by chance in at least one of the five cases is around 0.05, so there is a fairly clear bias towards shorter names. Whether this is a psychological effect whereby short names appear stronger, or something else, I don't know. There is also evidence, though with lower statistical confidence, that the nominee with the longest name is discriminated against in the voting (this nominee is successful on only 15% of occasions).</p>
+        <p>The length of an actor or actress's name (including spaces) also appears to have an effect on his or her chances of winning. In the four categories considered, on 27% of occasions (48 out of 176) was the nominee with the shortest name successful, more than the expected ~20% win rate. Whether this is a psychological effect whereby short names appear 'stronger', or something else, I don't know. There is also evidence, though with lower statistical confidence, that the nominee with the longest name is discriminated against in the voting (this nominee is successful on only 15% of occasions). The full set of nominees are plotted against name length below, from which it can be seen that the preference for shorter names is a fairly subtle effect.</p>
 
-        <p><i>The solid line in the plot shows the mean number of wins expected in each position by chance, and the dashed lines show the 90% confidence levels around this value for the five cases combined (i.e. there is a 10% probability of one of the five bars reaching these lines purely by chance). Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively.</i></p>
+        <p><i>Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively. In the scatter plot below, points are jittered slightly in both the x and y directions to avoid some points being fully obscured by others.</i></p>
       </div>
       <div id="svghold5b" class="svgwide">
       </div>
@@ -154,36 +161,42 @@
     var svg6a = dimple.newSvg("#svghold5a", "100%", "100%");
     var svg6b = dimple.newSvg("#svghold5b", "100%", "100%");
     //
-    
-    //TODO: add above:
-    //We would usually expect all bars to lie within the two outer lines.
-    
+        
     function addConfInts(chartObj, xvar, yAxisObj, yMax) {
-      var x5b = chartObj.addMeasureAxis("x", "x2");
-      var y5b = chartObj.addMeasureAxis("y", "avg");
-      var y5c = chartObj.addMeasureAxis("y", "uconf");
-      var y5d = chartObj.addMeasureAxis("y", "lconf");
-      var s5b = chartObj.addSeries(xvar, dimple.plot.line, [x5b,y5b]);
-      var s5c = chartObj.addSeries(xvar, dimple.plot.line, [x5b,y5c]);
-      var s5d = chartObj.addSeries(xvar, dimple.plot.line, [x5b,y5d]);
-      s5b.addEventHandler("mouseover", function () {});
-      s5c.addEventHandler("mouseover", function () {});
-      s5d.addEventHandler("mouseover", function () {});
-      s5b.lineWeight = 5;
+      var xb = chartObj.addMeasureAxis("x", "x2");
+      var yb = chartObj.addMeasureAxis("y", "avg");
+      var yc = chartObj.addMeasureAxis("y", "uconf");
+      var yd = chartObj.addMeasureAxis("y", "lconf");
+      var sb = chartObj.addSeries(xvar, dimple.plot.line, [xb,yb]);
+      var sc = chartObj.addSeries(xvar, dimple.plot.line, [xb,yc]);
+      var sd = chartObj.addSeries(xvar, dimple.plot.line, [xb,yd]);
+      sb.addEventHandler("mouseover", function () {});
+      sc.addEventHandler("mouseover", function () {});
+      sd.addEventHandler("mouseover", function () {});
+      sb.lineWeight = 5;
       //TODO: access these line objects and make dashed, set colour
 
       yAxisObj.showGridlines = false;
-      x5b.overrideMin = 0.6; x5b.overrideMax = 7; x5b.hidden = true;
+      xb.overrideMin = 0.6; xb.overrideMax = 7; xb.hidden = true;
       yAxisObj.overrideMax = yMax; 
-      y5b.overrideMax = yMax; y5b.hidden = true; 
-      y5c.overrideMax = yMax; y5c.hidden = true; 
-      y5d.overrideMax = yMax; y5d.hidden = true; 
+      yb.overrideMax = yMax; yb.hidden = true; 
+      yc.overrideMax = yMax; yc.hidden = true; 
+      yd.overrideMax = yMax; yd.hidden = true; 
     }
 
     //TODO: get bars/lines colours different as in alph. plot
 
+    // Functions for drawing plots:
+
     function basicBar1(thisSvg, filename, xvar, xtitle) {
       d3.csv(filename, function(data) {
+        if (data.length == 6) {
+          var uconf = 0.29; var lconf = 0.12;
+        } else if (data.length == 8) {
+          var uconf = 0.29; var lconf = 0.12;
+        } else if (data.length == 10) {
+          var uconf = 0.30; var lconf = 0.11;
+        }        
         data.forEach(function(d) {
           if (d.winFrac == 'nan') {
             d.winFrac = 0.;
@@ -192,24 +205,24 @@
           }
           d["numWins"] = +d["numWins"];
           d["numTot"] = +d["numTot"];
-          d["avg"] = 0.195; //since >5 noms in some cases
-          d["uconf"] = 0.28;  //rough, 10% for any of 5 to reach
-          d["lconf"] = 0.12; 
+          d["avg"] = 0.2; //really ~0.195 since >5 noms in some cases
+          d["uconf"] = uconf;  //rough, 10% for any of bars to reach
+          d["lconf"] = lconf; 
           d["x2"] = 1;
         });
         data[0]["x2"] = 0.5;
         data[data.length-1]["x2"] = 7.5;
 
-        var chart2 = new dimple.chart(thisSvg, data);
-        //chart2.setBounds(60,30,650,450);
-        //chart2.setBounds(60,30,"80%","80%");
-        chart2.setBounds("10%","10%","85%","85%");
+        var thisChart = new dimple.chart(thisSvg, data);
+        //thisChart.setBounds(60,30,650,450);
+        thisChart.setBounds("10%","10%","85%","80%");
 
-        var x2 = chart2.addCategoryAxis("x", xvar);
-        var y2 = chart2.addMeasureAxis("y", "winFrac");
+        var x2 = thisChart.addCategoryAxis("x", xvar);
+        var y2 = thisChart.addMeasureAxis("y", "winFrac");
 
         console.log(data);
-        var s2 = chart2.addSeries(["numWins"], dimple.plot.bar);
+        var s2 = thisChart.addSeries("anyn", dimple.plot.bar);
+        //var s2 = thisChart.addSeries(["numWins"], dimple.plot.bar);
         s2.barGap=0.30;
         s2.getTooltipText = function (e) {
           if (xvar == "prevNoms") {
@@ -222,9 +235,11 @@
           return [e.xField[0]+xbit,
                   e.aggField[0]+" / "+e.aggField[0]/e.yValue];
         };  
-        chart2.defaultColors = [new dimple.color('#CE1256')];
+        //thisChart.defaultColors = [new dimple.color('#CE1256')];
+        thisChart.defaultColors = [new dimple.color('#CE1256'),
+                                new dimple.color('#74C476')];  
 
-        addConfInts(chart2, xvar, y2, 0.4);
+        addConfInts(thisChart, xvar, y2, 0.4);
 
         y2.title = "Win fraction";
         x2.title = xtitle;
@@ -234,11 +249,39 @@
         x2.fontSize = 'auto';
         y2.fontSize = 'auto';
         
-        console.log(chart2);
-        //console.log(data[3]["prevNoms"],data[3]["winFrac"])
-        chart2.draw(2000);
+        //console.log(thisChart);
+        thisChart.draw(2000);
 
       });
+    }
+
+    function barsWithData(thisSvg, myData, xtitle, size='normal') {
+
+      var thisChart = new dimple.chart(thisSvg, myData);
+      if (size == 'normal') {
+        //chart5.setBounds(60,30,650,450);  
+        thisChart.setBounds("10%","10%","85%","80%");
+      } else {
+        thisChart.setBounds(60,30,450,300);
+      }
+      
+      var xax = thisChart.addCategoryAxis("x", "rank");
+      var yax = thisChart.addMeasureAxis("y", "totWins");
+
+      var s5 = thisChart.addSeries("anyname", dimple.plot.bar);
+      s5.barGap = 0.40;
+      s5.getTooltipText = function (e) {
+        return ["Rank "+e.xField[0]+" by alph. order,",
+                e.yValue+" wins"];
+      };  
+
+      addConfInts(thisChart, "rank", yax, 50);
+
+      xax.title = xtitle;
+      yax.title = "Total wins";
+      xax.fontSize = 'auto'; yax.fontSize = 'auto';
+
+      thisChart.draw(2000);
     }
 
     function bySeason(thisSvg) {
@@ -256,7 +299,7 @@
 
         var chart1 = new dimple.chart(thisSvg, data);
         //chart1.setBounds(60,30,650,450);
-        chart1.setBounds("10%","10%","85%","85%");
+        chart1.setBounds("10%","10%","85%","80%");
         //this is (topleftx,toplefty,bottomrightx,bottomrighty)
         //it's for the plot area only so leave space at bottom y, left x
 
@@ -307,8 +350,8 @@
         y1.overrideMax = 35;
         y1b.overrideMax = 35;
         y1b.hidden = true;
-        y1.title = "Number of wins (green line: % of shows)";
-        x1.title = "Years since debut (green line: length in years)"
+        y1.title = "Number of wins";
+        x1.title = "Years since debut"
         x1.addOrderRule("season");  //orders alphabetically
         x1.colors = ['red'];
         x1.fontSize = 'auto';  //scale with chart size rather than fixed 10px
@@ -319,102 +362,55 @@
       });
     }
 
+    // Draw plots according to tabs clicked
+
     //draw chart in home tab without clicking
     setTimeout(function() {
         basicBar1(svg2, "1972-2015_winFracPrevNoms.csv", 
           "prevNoms", "Number of previous nominations");  
       }, 500);
 
-    $(".mhtab").click(function() {
-      //TODO: erase content first?
-      //$("m1content").empty();   
+    var shownTabs = [true,false,false,false,false,false];
 
-      setTimeout(function() {
-        basicBar1(svg2, "1972-2015_winFracPrevNoms.csv", 
-          "prevNoms", "Number of previous nominations");  
-      }, 500);
-      
+    $(".mhtab").click(function() {
+      if (!shownTabs[0]) {
+        setTimeout(function() {
+          basicBar1(svg2, "1972-2015_winFracPrevNoms.csv", 
+            "prevNoms", "Number of previous nominations");  
+        }, 500);  
+        shownTabs[0] = true;
+      }
     })
 
     $(".m1tab").click(function() {
-      setTimeout(function() {
-        basicBar1(svg3, "1972-2015_winFracPrevWins.csv", 
-          "prevWins", "Number of previous wins");
-      }, 500);
+      if (!shownTabs[1]) {
+        setTimeout(function() {
+          console.log('claling');
+          basicBar1(svg3, "1972-2015_winFracPrevWins.csv", 
+            "prevWins", "Number of previous wins");
+        }, 500);
+        shownTabs[1] = true;
+      }
     })
 
     $(".m2tab").click(function() {
-      setTimeout(function() {
-        basicBar1(svg4, "1972-2015_winFracPrevLosses.csv", 
-          "prevLosses", "Number of previous losses");
-      }, 500);
+      if (!shownTabs[2]) {
+        setTimeout(function() {
+          basicBar1(svg4, "1972-2015_winFracPrevLosses.csv", 
+            "prevLosses", "Number of previous losses");
+        }, 500);
+        shownTabs[2] = true;
+      }
     })
     
     $(".m3tab").click(function() {
-      setTimeout(function() {
-        bySeason(svg1);
-      }, 500);
-    })
-
-
-  </script>
-
-  <script>
-    //TODO: if need to just make a subfunction inside and call it twice
-
-    function mine(thisSvg, myData, xtitle, size='normal') {
-      console.log('tab 4');
-
-      var chart5 = new dimple.chart(thisSvg, myData);
-      if (size == 'normal') {
-        //chart5.setBounds(60,30,650,450);  
-        chart5.setBounds("10%","10%","85%","85%");
-      } else {
-        chart5.setBounds(60,30,450,300);
+      if (!shownTabs[3]) {
+        setTimeout(function() {
+          bySeason(svg1);
+        }, 500);
+        shownTabs[3] = true;
       }
-      
-      var x5 = chart5.addCategoryAxis("x", "rank");
-      var y5 = chart5.addMeasureAxis("y", "totWins");
-
-      var s5 = chart5.addSeries("anyname", dimple.plot.bar);
-      s5.barGap = 0.40;
-      s5.getTooltipText = function (e) {
-        return ["Rank "+e.xField[0]+" by alph. order,",
-                e.yValue+" wins"];
-      };  
-
-      /*
-      var x5b = chart5.addMeasureAxis("x", "x2");
-      var y5b = chart5.addMeasureAxis("y", "avg");
-      var y5c = chart5.addMeasureAxis("y", "uconf");
-      var y5d = chart5.addMeasureAxis("y", "lconf");
-      var s5b = chart5.addSeries("rank", dimple.plot.line, [x5b,y5b]);
-      //need to use rank to tell dimple there is some difference between the points
-      var s5c = chart5.addSeries("rank", dimple.plot.line, [x5b,y5c]);
-      var s5d = chart5.addSeries("rank", dimple.plot.line, [x5b,y5d]);
-      s5b.addEventHandler("mouseover", function () {});
-      s5c.addEventHandler("mouseover", function () {});
-      s5d.addEventHandler("mouseover", function () {});
-
-      s5b.lineWeight = 5;
-      
-
-      y5.showGridlines = false;
-      x5b.overrideMin = 0.6; x5b.overrideMax = 7; x5b.hidden = true;
-      y5.overrideMax = 50; 
-      y5b.overrideMax = 50; y5b.hidden = true; 
-      y5c.overrideMax = 50; y5c.hidden = true; 
-      y5d.overrideMax = 50; y5d.hidden = true; 
-      */
-
-      addConfInts(chart5, "rank", y5, 50);
-
-      x5.title = xtitle;
-      y5.title = "Total wins";
-      x5.fontSize = 'auto'; y5.fontSize = 'auto';
-
-      chart5.draw(2000);
-    }
+    })
 
     var alphData = [
         {rank: 1, totWins: 49, x2: 0.5, avg: 35, uconf: 46, lconf: 25},
@@ -434,50 +430,57 @@
 
 
     $(".m4tab").click(function() {
-      setTimeout(function() {
-        mine(svg5, alphData, "Nominee alphabetical rank");
-      }, 500);
+      if (!shownTabs[4]) {
+        setTimeout(function() {
+          barsWithData(svg5, alphData, "Nominee alphabetical rank");
+        }, 500);
+        shownTabs[4] = true;
+      }
     });
 
     $(".m5tab").click(function() {
-      setTimeout(function() {
-        mine(svg6a, lenData, "Name length rank");
+      if (!shownTabs[5]) {
+        setTimeout(function() {
+          barsWithData(svg6a, lenData, "Name length rank");
 
-        d3.csv("1972-2015_nameLengths.csv", function(data) {
-          data.forEach(function(d) {
-            d["newt"] = d["year"]+d["person"];
-            d["nameLen"] = +d["nameLen"]+(Math.random()-0.5)*0.6;
-            d["year"] = +d["year"]+(Math.random()-0.5)*0.6;
-          });
+          d3.csv("1972-2015_nameLengths.csv", function(data) {
+            data.forEach(function(d) {
+              d["newt"] = d["year"]+d["person"];
+              d["nameLen"] = +d["nameLen"]+(Math.random()-0.5)*0.6;
+              d["year"] = +d["year"]+(Math.random()-0.5)*0.6;
+            });
 
 
-          var chart6 = new dimple.chart(svg6b, data);
-          //chart6.setBounds(60,30,800,450);
-          chart6.setBounds("10%","10%","85%","85%");
+            var chart6 = new dimple.chart(svg6b, data);
+            //chart6.setBounds(60,30,800,450);
+            chart6.setBounds("10%","10%","85%","80%");
 
-          var x6 = chart6.addMeasureAxis("x", "year");
-          var y6 = chart6.addMeasureAxis("y", "nameLen");
+            var x6 = chart6.addMeasureAxis("x", "year");
+            var y6 = chart6.addMeasureAxis("y", "nameLen");
 
-          var s6 = chart6.addSeries(["newt","winOrLose"], dimple.plot.bubble); //all same colour
-          s6.stacked = false;
-          s6.barGap=0.30;
-          s6.getTooltipText = function (e) {
-            return [e.aggField[0].slice(4)+", "+e.aggField[0].slice(0,4)+" ("+e.aggField[1]+")"];
-          };  
-          //chart6.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+            var s6 = chart6.addSeries(["newt","winOrLose"], dimple.plot.bubble); //all same colour
+            s6.stacked = false;
+            s6.barGap=0.30;
+            s6.getTooltipText = function (e) {
+              return [e.aggField[0].slice(4)+", "+e.aggField[0].slice(0,4)+" ("+e.aggField[1]+")"];
+            };  
+            //chart6.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
 
-          chart6.addLegend("65%","65%",200,100,"left");
+            chart6.addLegend("85%","85%",200,100,"left");
 
-          x6.overrideMin = 1971; x6.overrideMax = 2016;
-          y6.title = "Name length in characters";
-          x6.title = "Year";
-          //x6.colors = ['red'];
-          x6.fontSize = 'auto'; y6.fontSize = 'auto';
+            //TODO: fix tick labels
+            x6.overrideMin = 1971; x6.overrideMax = 2016;
+            y6.title = "Name length in characters";
+            x6.title = "Year";
+            //x6.colors = ['red'];
+            x6.fontSize = 'auto'; y6.fontSize = 'auto';
 
-          chart6.draw(2000);
-        });  
-      
-      }, 500);
+            chart6.draw(2000);
+          });  
+        
+        }, 500);
+        shownTabs[6] = true;
+      }
     });
     
   </script>
