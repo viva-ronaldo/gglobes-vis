@@ -417,7 +417,7 @@ if 1:
     plt.show()
 
 #write to file
-if 1 and len(years) >= 3 and \
+if 0 and len(years) >= 3 and \
     [hits.values()[i] == len(years) for i in range(6)]:
     with open('%i-%i_winFracPrevNoms.csv' % (years[0],years[-1]),
         'w') as csvfile:

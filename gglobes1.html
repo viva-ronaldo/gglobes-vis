@@ -103,7 +103,6 @@
 
       </div>
       <div id="texthold3" class="textholder">
-      <!--<h3>Golden Globe Wins By Show Year</h3>-->
         <p>A different trend in voting is revealed here: wins (counting only the Drama Series and Comedy/Musical Series this time) come overwhelmingly from shows in their first 3 seasons, with the greatest chance of winning coming in a show's first year. This is despite the fact that a substantial fraction of the shows nominated continue for 6-9 seasons (meaning that, in any given year, the expected number of wins by season should follow the green line; though see below). This is suggestive of one or both of voter fatigue after multiple wins in a show's early years, or a decline in quality in the later years of a run. While more than half the shows nominated ran for 6 or more years (perhaps largely on the back of successes in their early years, only a handful won any awards beyond their fifth season. These individual cases are visible in the tooltips for the respective seasons.</p>
 
         <p><i>The green line is an estimate of how many shows of each season are running at any time, made using the total lengths of all the shows in the nomination list. The line is flat at seasons 1-2 because none of the nominated shows were cancelled after their first season (unsurprisingly), meaning that a given year is equally likely to contain season twos as season ones. The true distribution is likely to be steeper at the low end, owing to the large amount of shows that never make it past season one. So, while the sheer number of season ones running at any time might seem to explain the larger win fraction for season one, it must be remembered that many of these are not real award contenders, by virtue of the fact that they were never nominated. The green line really represents the distribution for all shows that are considered 'a success', as judged by being nominated at some point in their lifetime. In this context, the bars lying below this line at seasons 4-8 tell us that successful shows rarely receive credit in the form of awards beyond their third season.
@@ -129,7 +128,9 @@
 
       </div>
       <div id="texthold5" class="textholder">
-        <p>The length of an actor or actress's name (including spaces) also appears to have an effect on his or her chances of winning. In the four categories considered, on 27% of occasions (48 out of 176) was the nominee with the shortest name successful, more than the expected ~20% win rate. Whether this is a psychological effect whereby short names appear 'stronger', or something else, I don't know. There is also evidence, though with lower statistical confidence, that the nominee with the longest name is discriminated against in the voting (this nominee is successful on only 15% of occasions). The full set of nominees are plotted against name length below, from which it can be seen that the preference for shorter names is a fairly subtle effect.</p>
+        <p>The length of an actor or actress's name (including spaces) also appears to have an effect on his or her chances of winning. In the four categories considered, on 27% of occasions (48 out of 176) was the nominee with the shortest name successful, more than the expected ~20% win rate. Whether this is a psychological effect whereby short names appear 'stronger', or something else, I don't know. There is also evidence, though with lower statistical confidence, that the nominee with the longest name is discriminated against in the voting (this nominee is successful on only 15% of occasions).</p>
+
+        <p>The full set of nominees is plotted against name length below, from which it can be seen that the preference for shorter names is a fairly subtle effect. Examples of nominees winning on their first appearance and losing thereafter, including Susan Dey, Mary-Louise Parker, Jon Hamm and others, can also be seen here.</p>
 
         <p><i>Where there were more than five nominees in a category, any winners in the last or second-last position were added to the fifth- and fourth-placed totals respectively. In the scatter plot below, points are jittered slightly in both the x and y directions to avoid some points being fully obscured by others.</i></p>
       </div>
@@ -174,7 +175,6 @@
       sc.addEventHandler("mouseover", function () {});
       sd.addEventHandler("mouseover", function () {});
       sb.lineWeight = 5;
-      //TODO: access these line objects and make dashed, set colour
 
       yAxisObj.showGridlines = false;
       xb.overrideMin = 0.6; xb.overrideMax = 7; xb.hidden = true;
@@ -184,11 +184,9 @@
       yd.overrideMax = yMax; yd.hidden = true; 
     }
 
-    //TODO: get bars/lines colours different as in alph. plot
-
     // Functions for drawing plots:
 
-    function basicBar1(thisSvg, filename, xvar, xtitle) {
+    function basicBar1(thisSvg, filename, xvar, xtitle, yMax) {
       d3.csv(filename, function(data) {
         if (data.length == 6) {
           var uconf = 0.29; var lconf = 0.12;
@@ -209,6 +207,7 @@
           d["uconf"] = uconf;  //rough, 10% for any of bars to reach
           d["lconf"] = lconf; 
           d["x2"] = 1;
+          d["identifier"] = d["numWins"]+"_"+d["numTot"];
         });
         data[0]["x2"] = 0.5;
         data[data.length-1]["x2"] = 7.5;
@@ -220,8 +219,7 @@
         var x2 = thisChart.addCategoryAxis("x", xvar);
         var y2 = thisChart.addMeasureAxis("y", "winFrac");
 
-        console.log(data);
-        var s2 = thisChart.addSeries("anyn", dimple.plot.bar);
+        var s2 = thisChart.addSeries(["identifier"], dimple.plot.bar);
         //var s2 = thisChart.addSeries(["numWins"], dimple.plot.bar);
         s2.barGap=0.30;
         s2.getTooltipText = function (e) {
@@ -233,13 +231,21 @@
             var xbit = " previous losses";
           }
           return [e.xField[0]+xbit,
-                  e.aggField[0]+" / "+e.aggField[0]/e.yValue];
+                  e.aggField[0].split('_')[0]+" / "+e.aggField[0].split('_')[1]];
         };  
         //thisChart.defaultColors = [new dimple.color('#CE1256')];
-        thisChart.defaultColors = [new dimple.color('#CE1256'),
-                                new dimple.color('#74C476')];  
+        //thisChart.defaultColors = [new dimple.color('#6BAED6'),
+        //                           new dimple.color('#33A02C')];
+        thisChart.defaultColors = [new dimple.color('#33A02C')];
+        console.log(data);
+        data.forEach(function(d){
+          console.log(d["identifier"]);
+          thisChart.assignColor(d["identifier"],"#6BAED6");
+        });
+        thisChart.assignColor("4");
+        console.log(thisChart);
 
-        addConfInts(thisChart, xvar, y2, 0.4);
+        addConfInts(thisChart, xvar, y2, yMax);
 
         y2.title = "Win fraction";
         x2.title = xtitle;
@@ -249,9 +255,7 @@
         x2.fontSize = 'auto';
         y2.fontSize = 'auto';
         
-        //console.log(thisChart);
         thisChart.draw(2000);
-
       });
     }
 
@@ -274,6 +278,10 @@
         return ["Rank "+e.xField[0]+" by alph. order,",
                 e.yValue+" wins"];
       };  
+  
+      thisChart.defaultColors = [new dimple.color('#6BAED6'),
+                                 new dimple.color('#33A02C')];
+                                 //#CE1256
 
       addConfInts(thisChart, "rank", yax, 50);
 
@@ -299,9 +307,9 @@
 
         var chart1 = new dimple.chart(thisSvg, data);
         //chart1.setBounds(60,30,650,450);
-        chart1.setBounds("10%","10%","85%","80%");
         //this is (topleftx,toplefty,bottomrightx,bottomrighty)
         //it's for the plot area only so leave space at bottom y, left x
+        chart1.setBounds("10%","10%","85%","80%");
 
         var x1 = chart1.addCategoryAxis("x", "season");
         var y1 = chart1.addMeasureAxis("y", "numWins");
@@ -328,19 +336,14 @@
                     data[e.xField[0]-1]["numWins"]+" wins"];  
           }
         };  
-        chart1.defaultColors = [new dimple.color('#CE1256'),
-                                new dimple.color('#74C476')];  
+        chart1.defaultColors = [new dimple.color('#6BAED6'),
+                                new dimple.color('#33A02C')];  
+                                //#74C476
         //these are cycled through
 
         var y1b = chart1.addMeasureAxis("y", "expWins");
         var s1b = chart1.addSeries("Series2", dimple.plot.line, [x1,y1b]);
         s1b.lineWeight = 3;
-        var something = svg1.select("g").select("rect#dimple-all-10---");
-        something.style({"fill": "#fa6257"});
-        console.log(d3.select("#menu3 > svg:nth-child(2)"));
-        console.log(svg1.select("g"));
-        console.log(something);
-
         s1b.getTooltipText = function (e) {
           return ["Season "+e.xField[0],
                   data[e.xField[0]-1]["expWins"].toFixed(1)+" wins expected"];
@@ -367,7 +370,7 @@
     //draw chart in home tab without clicking
     setTimeout(function() {
         basicBar1(svg2, "1972-2015_winFracPrevNoms.csv", 
-          "prevNoms", "Number of previous nominations");  
+          "prevNoms", "Number of previous nominations", 0.4);  
       }, 500);
 
     var shownTabs = [true,false,false,false,false,false];
@@ -376,7 +379,7 @@
       if (!shownTabs[0]) {
         setTimeout(function() {
           basicBar1(svg2, "1972-2015_winFracPrevNoms.csv", 
-            "prevNoms", "Number of previous nominations");  
+            "prevNoms", "Number of previous nominations", 0.4);  
         }, 500);  
         shownTabs[0] = true;
       }
@@ -385,9 +388,8 @@
     $(".m1tab").click(function() {
       if (!shownTabs[1]) {
         setTimeout(function() {
-          console.log('claling');
           basicBar1(svg3, "1972-2015_winFracPrevWins.csv", 
-            "prevWins", "Number of previous wins");
+            "prevWins", "Number of previous wins", 0.4);
         }, 500);
         shownTabs[1] = true;
       }
@@ -397,7 +399,7 @@
       if (!shownTabs[2]) {
         setTimeout(function() {
           basicBar1(svg4, "1972-2015_winFracPrevLosses.csv", 
-            "prevLosses", "Number of previous losses");
+            "prevLosses", "Number of previous losses", 0.5);
         }, 500);
         shownTabs[2] = true;
       }
@@ -445,7 +447,7 @@
 
           d3.csv("1972-2015_nameLengths.csv", function(data) {
             data.forEach(function(d) {
-              d["newt"] = d["year"]+d["person"];
+              d["identifier"] = d["year"]+d["person"];
               d["nameLen"] = +d["nameLen"]+(Math.random()-0.5)*0.6;
               d["year"] = +d["year"]+(Math.random()-0.5)*0.6;
             });
@@ -458,28 +460,28 @@
             var x6 = chart6.addMeasureAxis("x", "year");
             var y6 = chart6.addMeasureAxis("y", "nameLen");
 
-            var s6 = chart6.addSeries(["newt","winOrLose"], dimple.plot.bubble); //all same colour
+            var s6 = chart6.addSeries(["identifier","winOrLose"], dimple.plot.bubble); //all same colour
             s6.stacked = false;
             s6.barGap=0.30;
             s6.getTooltipText = function (e) {
               return [e.aggField[0].slice(4)+", "+e.aggField[0].slice(0,4)+" ("+e.aggField[1]+")"];
             };  
-            //chart6.defaultColors = [new dimple.color('#CE1256')];  //these are cycled through
+            chart6.defaultColors = [new dimple.color('#BDBDBD'),
+                                    new dimple.color('#F768A1')];  
 
             chart6.addLegend("85%","85%",200,100,"left");
 
-            //TODO: fix tick labels
-            x6.overrideMin = 1971; x6.overrideMax = 2016;
+            x6.tickFormat = 'i';
+            x6.overrideMin = 1971; x6.overrideMax = 2015;
             y6.title = "Name length in characters";
             x6.title = "Year";
-            //x6.colors = ['red'];
             x6.fontSize = 'auto'; y6.fontSize = 'auto';
 
             chart6.draw(2000);
           });  
         
         }, 500);
-        shownTabs[6] = true;
+        shownTabs[5] = true;
       }
     });
     
