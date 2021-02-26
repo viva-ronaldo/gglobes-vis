@@ -1,5 +1,1 @@
-Practice d3.js and web scraping by making some visualisations
-  of Golden Globe TV nominations through history.
-
-Published page should use tabs with d3 plot and paragraph of 
-  text on each.
+Analysis of Golden Globe TV awards categories 1972-2020 and predictions for 2021, for Towards Data Science article.
